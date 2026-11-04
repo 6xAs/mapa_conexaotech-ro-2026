@@ -136,7 +136,7 @@
       "status": "informado"
     },
     {
-      "spaceId": "lab-01",
+      "spaceId": "lab-04",
       "start": "19:00",
       "title": "Do Caos ao Pipeline: Desenvolvimento Guiado por IA em Produção",
       "speakers": [
@@ -158,7 +158,7 @@
       "status": "informado"
     },
     {
-      "spaceId": "lab-04",
+      "spaceId": "lab-01",
       "start": "19:00",
       "title": "Agentes de IA conversacionais",
       "speakers": [
