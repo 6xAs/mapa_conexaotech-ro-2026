@@ -1,0 +1,212 @@
+{
+  "status": "circulation-illustree-dans-la-reference",
+  "note": "Circulação ilustrada na planta. Não representa rotas calculadas ou acessibilidade confirmada.",
+  "trails": [
+    {
+      "id": "acces-informations",
+      "points": [
+        [
+          753,
+          691
+        ],
+        [
+          753,
+          523
+        ],
+        [
+          749,
+          479
+        ],
+        [
+          990,
+          484
+        ],
+        [
+          1050,
+          484
+        ],
+        [
+          1074,
+          440
+        ],
+        [
+          1104,
+          382
+        ]
+      ]
+    },
+    {
+      "id": "liaison-principale",
+      "points": [
+        [
+          817,
+          765
+        ],
+        [
+          1152,
+          765
+        ]
+      ]
+    },
+    {
+      "id": "acces-credenciamento",
+      "points": [
+        [
+          1227,
+          734
+        ],
+        [
+          1216,
+          688
+        ],
+        [
+          1243,
+          648
+        ]
+      ]
+    },
+    {
+      "id": "passage-piscine",
+      "points": [
+        [
+          1294,
+          536
+        ],
+        [
+          1293,
+          644
+        ]
+      ]
+    },
+    {
+      "id": "cantine-gauche",
+      "points": [
+        [
+          816,
+          438
+        ],
+        [
+          815,
+          438
+        ]
+      ]
+    },
+    {
+      "id": "cantine-droite",
+      "points": [
+        [
+          1135,
+          432
+        ],
+        [
+          1129,
+          487
+        ]
+      ]
+    },
+    {
+      "id": "cantine-droite-retour",
+      "points": [
+        [
+          1238,
+          437
+        ],
+        [
+          1205,
+          514
+        ]
+      ]
+    },
+    {
+      "id": "acces-couverture",
+      "points": [
+        [
+          777,
+          818
+        ],
+        [
+          813,
+          834
+        ]
+      ]
+    },
+    {
+      "id": "passage-bas",
+      "points": [
+        [
+          948,
+          864
+        ],
+        [
+          1217,
+          860
+        ]
+      ]
+    },
+    {
+      "id": "passerelle-bas",
+      "points": [
+        [
+          870,
+          958
+        ],
+        [
+          870,
+          998
+        ]
+      ]
+    },
+    {
+      "id": "couloir-laboratoires",
+      "points": [
+        [
+          1330,
+          841
+        ],
+        [
+          1330,
+          985
+        ]
+      ]
+    },
+    {
+      "id": "couloir-auditorium",
+      "points": [
+        [
+          1437,
+          794
+        ],
+        [
+          1439,
+          976
+        ]
+      ]
+    },
+    {
+      "id": "escalier-acces",
+      "points": [
+        [
+          1289,
+          808
+        ],
+        [
+          1305,
+          801
+        ]
+      ]
+    },
+    {
+      "id": "acces-salle",
+      "points": [
+        [
+          1419,
+          756
+        ],
+        [
+          1438,
+          725
+        ]
+      ]
+    }
+  ]
+}

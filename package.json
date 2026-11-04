@@ -1,0 +1,11 @@
+{
+  "name": "conexaotech-ro-2026",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Mapa interativo em SVG do ConexãoTech RO 2026",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node --check dist/app.js && node scripts/build.mjs --check"
+  },
+  "engines": {"node": ">=20"}
+}

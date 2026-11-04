@@ -1,0 +1,293 @@
+[
+  {
+    "id": "anfiteatro-01",
+    "name": "Anfiteatro 01",
+    "category": "Anfiteatros",
+    "x": 1012,
+    "y": 165,
+    "width": 55,
+    "height": 120,
+    "validation": "transcrito-da-referencia",
+    "vertical": true
+  },
+  {
+    "id": "anfiteatro-02",
+    "name": "Anfiteatro 02",
+    "category": "Anfiteatros",
+    "x": 1219,
+    "y": 165,
+    "width": 55,
+    "height": 120,
+    "validation": "transcrito-da-referencia",
+    "vertical": true
+  },
+  {
+    "id": "apg-01",
+    "name": "APG 01",
+    "category": "Ambientes",
+    "x": 1087,
+    "y": 191,
+    "width": 56,
+    "height": 89,
+    "validation": "transcrito-da-referencia"
+  },
+  {
+    "id": "apg-02",
+    "name": "APG02",
+    "category": "Ambientes",
+    "x": 1143,
+    "y": 191,
+    "width": 56,
+    "height": 89,
+    "validation": "transcrito-da-referencia"
+  },
+  {
+    "id": "passarela-quadra",
+    "name": "Passarela para Quadra",
+    "category": "Circulação",
+    "x": 947,
+    "y": 142,
+    "width": 50,
+    "height": 212,
+    "validation": "transcrito-da-referencia",
+    "vertical": true
+  },
+  {
+    "id": "entrada-superior",
+    "name": "Entrada",
+    "category": "Acessos",
+    "x": 1102,
+    "y": 322,
+    "width": 85,
+    "height": 32,
+    "validation": "transcrito-da-referencia"
+  },
+  {
+    "id": "cantina-01",
+    "name": "Cantina 01",
+    "category": "Alimentação",
+    "x": 711,
+    "y": 391,
+    "width": 94,
+    "height": 70,
+    "validation": "transcrito-da-referencia"
+  },
+  {
+    "id": "maker",
+    "name": "Espaço Maker",
+    "category": "Ambientes",
+    "x": 817,
+    "y": 392,
+    "width": 195,
+    "height": 70,
+    "validation": "transcrito-da-referencia"
+  },
+  {
+    "id": "cantina-02",
+    "name": "Cantina 02",
+    "category": "Alimentação",
+    "x": 1111,
+    "y": 389,
+    "width": 148,
+    "height": 152,
+    "validation": "transcrito-da-referencia",
+    "points": "1154,389 1216,389 1259,432 1259,498 1216,541 1154,541 1111,498 1111,432"
+  },
+  {
+    "id": "lab-03",
+    "name": "Lab 03",
+    "category": "Laboratórios",
+    "x": 800,
+    "y": 523,
+    "width": 51,
+    "height": 57,
+    "validation": "transcrito-da-referencia"
+  },
+  {
+    "id": "lab-02",
+    "name": "Lab 02",
+    "category": "Laboratórios",
+    "x": 851,
+    "y": 523,
+    "width": 60,
+    "height": 57,
+    "validation": "transcrito-da-referencia"
+  },
+  {
+    "id": "lab-01",
+    "name": "Lab 01",
+    "category": "Laboratórios",
+    "x": 911,
+    "y": 523,
+    "width": 101,
+    "height": 57,
+    "validation": "transcrito-da-referencia"
+  },
+  {
+    "id": "piscina",
+    "name": "Piscina",
+    "category": "Ambientes",
+    "x": 1338,
+    "y": 437,
+    "width": 87,
+    "height": 183,
+    "validation": "transcrito-da-referencia"
+  },
+  {
+    "id": "recepcao",
+    "name": "Recepção Sapiens",
+    "category": "Serviços",
+    "x": 581,
+    "y": 717,
+    "width": 86,
+    "height": 38,
+    "validation": "transcrito-da-referencia"
+  },
+  {
+    "id": "informacoes",
+    "name": "Informações",
+    "category": "Entradas principais",
+    "x": 710,
+    "y": 700,
+    "width": 87,
+    "height": 94,
+    "validation": "entrada-principal-confirmada-pelo-usuario",
+    "entry": true
+  },
+  {
+    "id": "credenciamento",
+    "name": "Credenciamento",
+    "category": "Entradas principais",
+    "x": 1188,
+    "y": 747,
+    "width": 81,
+    "height": 85,
+    "validation": "entrada-principal-confirmada-pelo-usuario",
+    "entry": true
+  },
+  {
+    "id": "cobertura",
+    "name": "Cobertura",
+    "category": "Circulação",
+    "x": 853,
+    "y": 797,
+    "width": 186,
+    "height": 83,
+    "validation": "transcrito-da-referencia"
+  },
+  {
+    "id": "passarela",
+    "name": "Passarela",
+    "category": "Circulação",
+    "x": 853,
+    "y": 880,
+    "width": 35,
+    "height": 138,
+    "validation": "transcrito-da-referencia",
+    "vertical": true
+  },
+  {
+    "id": "sala-whashington",
+    "name": "Sala Whashington",
+    "category": "Ambientes",
+    "x": 1505,
+    "y": 718,
+    "width": 106,
+    "height": 96,
+    "validation": "grafia-a-validar",
+    "floor": "2º andar"
+  },
+  {
+    "id": "auditorio",
+    "name": "Auditório",
+    "category": "Ambientes",
+    "x": 1462,
+    "y": 814,
+    "width": 149,
+    "height": 189,
+    "validation": "transcrito-da-referencia",
+    "floor": "2º andar"
+  },
+  {
+    "id": "lab-04",
+    "name": "Lab 04",
+    "category": "Laboratórios",
+    "x": 1354,
+    "y": 864,
+    "width": 61,
+    "height": 67,
+    "validation": "transcrito-da-referencia"
+  },
+  {
+    "id": "lab-05",
+    "name": "Lab 05",
+    "category": "Laboratórios",
+    "x": 1354,
+    "y": 941,
+    "width": 61,
+    "height": 62,
+    "validation": "transcrito-da-referencia"
+  },
+  {
+    "id": "banheiro-01",
+    "name": "Banheiro",
+    "category": "Serviços",
+    "x": 714,
+    "y": 582,
+    "width": 24,
+    "height": 56,
+    "validation": "transcrito-da-referencia",
+    "vertical": true
+  },
+  {
+    "id": "banheiro-02",
+    "name": "Banheiro",
+    "category": "Serviços",
+    "x": 772,
+    "y": 582,
+    "width": 23,
+    "height": 56,
+    "validation": "transcrito-da-referencia",
+    "vertical": true
+  },
+  {
+    "id": "banheiro-03",
+    "name": "Banheiro",
+    "category": "Serviços",
+    "x": 1247,
+    "y": 671,
+    "width": 60,
+    "height": 45,
+    "validation": "transcrito-da-referencia"
+  },
+  {
+    "id": "banheiro-04",
+    "name": "Banheiro",
+    "category": "Serviços",
+    "x": 1247,
+    "y": 832,
+    "width": 62,
+    "height": 31,
+    "validation": "transcrito-da-referencia"
+  },
+  {
+    "id": "banheiro-05",
+    "name": "Banheiro",
+    "category": "Serviços",
+    "x": 1354,
+    "y": 815,
+    "width": 61,
+    "height": 48,
+    "validation": "transcrito-da-referencia"
+  },
+  {
+    "id": "elevador",
+    "name": "Elevador",
+    "category": "Circulação",
+    "x": 1356,
+    "y": 763,
+    "width": 35,
+    "height": 29,
+    "validation": "transcrito-da-referencia"
+  }
+]
