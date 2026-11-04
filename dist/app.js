@@ -3,6 +3,7 @@ const viewport = document.querySelector('#viewport');
 const root = document.querySelector('#map-root');
 const value = document.querySelector('#zoom-value');
 const MIN = 1, MAX = 8;
+const program=JSON.parse(document.querySelector('#program-data').textContent);
 let svg, zoom = 1, pan = {x:0,y:0}, center={x:1030,y:565}, data = [], pointers = new Map(), previous, pendingMarker, cameraAnimation=0;
 function render() {
   if (!svg) return;
@@ -211,7 +212,7 @@ function createMarkers(){
     const transform=first.transform.baseVal.consolidate()?.matrix;
     const anchor=rotated?{x:transform.e,y:transform.f}:{x:Number(first.getAttribute('x')),y:record.entry?Number(first.getAttribute('y')):(Number(names[0].getAttribute('y'))+Number(names.at(-1).getAttribute('y')))/2};
     let lines=record.id==='maker'?['Espaço','Maker']:record.entry?[record.name,'Entrada principal']:record.floor?[record.name.replace('Sala ','Sala '),record.floor]:[record.name];
-    if(record.id==='sala-whashington')lines=['Sala Whashington',record.floor];
+    if(record.id==='sala-whashington')lines=[record.name,record.floor];
     const group=svgElement('g',{class:`map-marker theme-${record.visualTheme}`,'data-marker':record.id,role:'button',tabindex:'-1','aria-label':`Localizar ${record.name}${record.floor?', '+record.floor:''}${record.locationHint?', '+record.locationHint:''}`,'aria-pressed':'false'});
     const title=svgElement('title');title.textContent=`Localizar ${record.name}`;group.append(title);
     const bg=svgElement('rect',{class:'marker-surface',rx:'7'});group.append(bg);
@@ -260,17 +261,22 @@ document.addEventListener('visibilitychange',()=>{svg?.classList.toggle('documen
 new ResizeObserver(()=>requestAnimationFrame(render)).observe(viewport);
 // Busca e informações usam somente os registros da planta.
 const searchInput=document.querySelector('#space-search');
+const programOnly=document.querySelector('#program-only');
 const categoryFilter=document.querySelector('#category-filter');
 const resultList=document.querySelector('#search-results');
 const detailPanel=document.querySelector('#space-details');
 let selectedId=null,selectionOrigin=null;
 function normalize(value){return String(value).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/([a-z -])0+(\d)/g,'$1$2').replace(/[^a-z0-9]+/g,' ').trim().replace(/\b0+(\d)/g,'$1');}
 function matches(record){
+  if(programOnly.checked&&!program.events.some(e=>e.spaceId===record.id))return false;
   const category=categoryFilter.value;
   if(category&&record.category!==category)return false;
   const query=normalize(searchInput.value);if(!query)return true;
+  const indexed=query.match(/^(lab|laboratorio|anfiteatro|apg)\s*(\d+)$/);
+  if(indexed){const prefix=indexed[1]==='laboratorio'?'lab':indexed[1];return normalize(record.id).replaceAll(' ','')===prefix+Number(indexed[2]);}
   const aliases=record.id.startsWith('lab-')?`laboratorio ${parseInt(record.id.slice(4),10)}`:'';
-  const text=normalize(`${record.name} ${record.id} ${record.locationHint||''} ${(record.searchTerms||[]).join(' ')} ${aliases}`);
+  const activities=program.events.filter(e=>e.spaceId===record.id).map(e=>`${e.title||''} ${e.speakers.join(' ')} ${e.start}`).join(' ');
+  const text=normalize(`${activities} ${record.name} ${record.id} ${record.locationHint||''} ${(record.searchTerms||[]).join(' ')} ${aliases}`);
   return query.split(' ').every(part=>text.includes(part))||text.replaceAll(' ','').includes(query.replaceAll(' ',''));
 }
 function initializeSearch(){
@@ -289,17 +295,19 @@ function renderResults(){
   }
   document.querySelector('#results-count').textContent=`${list.length} ${list.length===1?'local':'locais'}`;
   document.querySelector('#no-results').hidden=list.length>0;
-  document.querySelector('#clear-search').hidden=!searchInput.value&&!categoryFilter.value;
+  document.querySelector('#clear-search').hidden=!searchInput.value&&!categoryFilter.value&&!programOnly.checked;
+  document.querySelector('#open-program').setAttribute('aria-pressed',String(programOnly.checked));
   document.querySelectorAll('[data-category]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.category===categoryFilter.value)));
   if(svg){
     data.forEach(s=>svg.querySelector(`#space-${s.id}`)?.classList.toggle('is-filtered',!matches(s)));
     updateMarkers();
   }
 }
-function clearSearch(focus=true){searchInput.value='';categoryFilter.value='';renderResults();if(focus)searchInput.focus();}
-searchInput.addEventListener('input',renderResults);categoryFilter.addEventListener('change',renderResults);
+function clearSearch(focus=true){searchInput.value='';categoryFilter.value='';programOnly.checked=false;renderResults();if(focus)searchInput.focus();}
+searchInput.addEventListener('input',renderResults);categoryFilter.addEventListener('change',renderResults);programOnly.addEventListener('change',renderResults);
 document.querySelector('#clear-search').onclick=()=>clearSearch();
-document.querySelectorAll('[data-category]').forEach(button=>button.onclick=()=>{searchInput.value='';categoryFilter.value=button.dataset.category;renderResults();setSidebar(true);});
+document.querySelectorAll('[data-category]').forEach(button=>button.onclick=()=>{searchInput.value='';programOnly.checked=false;categoryFilter.value=button.dataset.category;renderResults();setSidebar(true);});
+document.querySelector('#open-program').onclick=()=>{searchInput.value='';categoryFilter.value='';programOnly.checked=true;renderResults();setSidebar(true);};
 document.querySelector('#search-form').onsubmit=e=>{e.preventDefault();const first=resultList.querySelector('button');if(first)first.click();};
 function attachSpaceInteractions(){
   for(const s of data){
@@ -327,8 +335,27 @@ function showDetails(record){
   if(record.entry)fact('Acesso','Entrada principal confirmada');
   if(record.name.startsWith('Lab ')||record.name.startsWith('APG')||record.name.startsWith('Anfiteatro'))fact('Identificação na planta',record.name);
   if(!record.floor&&!record.entry)fact('Referência','Planta fornecida do evento');
-  document.querySelector('#detail-note').textContent=record.validation==='grafia-a-validar'?'Nome transcrito da planta; grafia ainda em validação.':record.category==='Bebedouros'?'Ponto de água indicado pelo símbolo na planta fornecida.':record.validation==='pavimento-confirmado-pelo-usuario'?'Pavimento confirmado: mesmo plano do Auditório e da Sala Whashington.':record.category==='Estacionamento'?'Posição indicada pela inscrição na planta; não há setores oficiais informados.':record.id==='escadas'||record.id==='elevador'?'Acesso vertical indicado na planta. Percurso acessível não confirmado.':'Programação e informações complementares não foram fornecidas.';
+  document.querySelector('#detail-note').textContent=record.validation==='grafia-a-validar'?'Nome transcrito da planta; grafia ainda em validação.':record.category==='Bebedouros'?'Ponto de água indicado pelo símbolo na planta fornecida.':record.validation==='pavimento-confirmado-pelo-usuario'?'Pavimento confirmado: mesmo plano do Auditório e da Sala Washington.':record.category==='Estacionamento'?'Posição indicada pela inscrição na planta; não há setores oficiais informados.':record.id==='escadas'||record.id==='elevador'?'Acesso vertical indicado na planta. Percurso acessível não confirmado.':'Programação e informações complementares não foram fornecidas.';
+  renderProgram(record);
   document.querySelector('#detail-title').focus({preventScroll:true});
+}
+function renderProgram(record){
+  const panel=document.querySelector('#detail-schedule'),list=document.querySelector('#schedule-events');
+  const events=program.events.filter(e=>e.spaceId===record.id).sort((a,b)=>a.start.localeCompare(b.start));
+  panel.hidden=!events.length;detailPanel.classList.toggle('has-program',Boolean(events.length));list.replaceChildren();
+  const date=document.querySelector('#schedule-date');date.dateTime=program.date;date.textContent=program.dateLabel;
+  for(const event of events){
+    const item=document.createElement('li'),time=document.createElement('time'),content=document.createElement('div'),title=document.createElement('h4');
+    time.dateTime=`${program.date}T${event.start}`;time.textContent=event.start.replace(':','h');
+    title.textContent=event.title||'Atividade não informada no roteiro';content.append(title);
+    if(event.speakers.length){const speakers=document.createElement('p');speakers.className='schedule-speakers';speakers.textContent=event.speakers.join('; ');content.append(speakers);}
+    else{const pending=document.createElement('p');pending.className='schedule-pending';pending.textContent='O documento apresenta somente o horário.';content.append(pending);}
+    item.append(time,content);list.append(item);
+  }
+  const note=document.querySelector('#detail-note');
+  if(events.length)note.textContent='Horários de término não informados no roteiro.';
+  else if(note.textContent==='Programação e informações complementares não foram fornecidas.')note.textContent=`Não há programação deste espaço no roteiro de ${program.dateLabel}.`;
+  detailPanel.scrollTop=0;
 }
 function closeDetails(returnFocus=true){
   const open=!detailPanel.hidden;detailPanel.hidden=true;document.querySelector('.map-area').classList.remove('has-details');

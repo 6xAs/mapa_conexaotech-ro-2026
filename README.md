@@ -90,3 +90,7 @@ Abra “Explorar mapa” para buscar por nome/identificação e filtrar categori
 ## Locais e pontos de água
 
 A navegação superior e os cartões da sidebar destacam categorias de locais. Os quatro bebedouros indicados na planta têm categoria própria e podem ser buscados por “água”. O banheiro acima do Credenciamento está identificado no 2º andar. A numeração dos anfiteatros foi corrigida: 01 à direita e 02 à esquerda. Veja `docs/ajustes-locais-bebedouros.md`.
+
+## Programação de 04/11
+
+O roteiro fornecido foi associado a 11 espaços. Use o atalho “Programação · 04/11” ou abra um ambiente para consultar as atividades no painel existente. Títulos e palestrantes também podem ser pesquisados. Os dados ficam em `dist/data/programacao.json`; o build valida as associações e incorpora a agenda ao HTML. O horário sem atividade no Anfiteatro 02 está sinalizado. No bloco central, o Lab 03 foi removido e sua área incorporada ao Lab 02; Labs 04/05 mantidos conforme o roteiro. Veja `docs/programacao-04-11.md`.

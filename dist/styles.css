@@ -63,3 +63,11 @@ body{grid-template-rows:80px 52px minmax(0,1fr) 36px}
 #space-banheiro-03>.room{fill:#eee6f8;stroke:#8b72b2;stroke-width:2}#space-banheiro-03 .floor-label{font-weight:750}
 @media(max-width:1000px){.quick-nav-label{display:none}.quick-nav{padding-inline:16px}}
 @media(max-width:700px){body{grid-template-rows:72px 52px minmax(0,1fr) auto}.quick-nav{padding-inline:12px;gap:7px}.quick-button{min-height:38px;font-size:11px;padding:8px 11px}.sidebar{top:124px}.sidebar-backdrop{top:124px}.sidebar-categories{gap:7px}.category-card{font-size:11px;padding:11px 8px}.category-card span{font-size:9px}.search-results{max-height:31vh}}
+
+.agenda-quick{background:#f3eefb;border-color:#c8b6e5;color:#583d89;font-weight:600}
+.search-tools .program-filter{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:500;line-height:1.6;margin:13px 0 0;cursor:pointer}.program-filter input{accent-color:#644797;width:16px;height:16px;flex-shrink:0}
+.detail-schedule{margin:18px 0 0}.detail-schedule h3{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:12px;margin:0 0 15px;font-weight:650;color:#46365e}.detail-schedule h3>time{font-size:11px;background:#eee7f8;border-radius:5px;padding:4px 7px}
+#schedule-events{list-style:none;padding:0;margin:0}#schedule-events>li{display:grid;grid-template-columns:47px minmax(0,1fr);gap:10px;padding:0 0 19px;margin:0 0 16px;border-bottom:1px solid #edf0f4}#schedule-events>li:last-child{margin-bottom:0}
+#schedule-events>li>time{font-size:11px;font-weight:650;color:#644797;line-height:1.8;font-variant-numeric:tabular-nums}
+#schedule-events h4{font-size:12px;line-height:1.65;font-weight:600;margin:0;color:#30425a;overflow-wrap:anywhere}.schedule-speakers{font-size:11px;line-height:1.7;color:#6c798c;margin:7px 0 0}.schedule-pending{font-size:10px;line-height:1.7;color:#8b6b32;margin:7px 0 0}.schedule-source{font-size:10px;color:#8b94a3;line-height:1.7;margin:12px 0}
+@media(max-width:700px){.space-details.has-program{max-height:50%}.detail-schedule h3{font-size:13px}#schedule-events h4{font-size:13px}.schedule-speakers{font-size:12px}.search-tools .program-filter{font-size:12px}}

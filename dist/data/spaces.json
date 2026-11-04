@@ -114,26 +114,14 @@
     "visualTheme": "orange"
   },
   {
-    "id": "lab-03",
-    "name": "Lab 03",
-    "category": "Laboratórios",
-    "x": 800,
-    "y": 523,
-    "width": 51,
-    "height": 57,
-    "validation": "transcrito-da-referencia",
-    "visualLevel": 1,
-    "visualTheme": "blue"
-  },
-  {
     "id": "lab-02",
     "name": "Lab 02",
     "category": "Laboratórios",
-    "x": 851,
+    "x": 800,
     "y": 523,
-    "width": 60,
+    "width": 111,
     "height": 57,
-    "validation": "transcrito-da-referencia",
+    "validation": "area-ampliada-pelo-usuario",
     "visualLevel": 1,
     "visualTheme": "blue"
   },
@@ -226,16 +214,20 @@
   },
   {
     "id": "sala-whashington",
-    "name": "Sala Whashington",
+    "name": "Sala Washington",
     "category": "Ambientes",
     "x": 1505,
     "y": 718,
     "width": 106,
     "height": 96,
-    "validation": "grafia-a-validar",
+    "validation": "nome-confirmado-no-roteiro",
     "floor": "2º andar",
     "visualLevel": 2,
-    "visualTheme": "neutral"
+    "visualTheme": "neutral",
+    "searchTerms": [
+      "Whashington",
+      "Washington"
+    ]
   },
   {
     "id": "auditorio",
@@ -313,7 +305,7 @@
     "validation": "pavimento-confirmado-pelo-usuario",
     "visualLevel": 2,
     "visualTheme": "purple",
-    "locationHint": "No mesmo plano do Auditório e da Sala Whashington",
+    "locationHint": "No mesmo plano do Auditório e da Sala Washington",
     "floor": "2º andar"
   },
   {
