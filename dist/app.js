@@ -3,7 +3,7 @@ const viewport = document.querySelector('#viewport');
 const root = document.querySelector('#map-root');
 const value = document.querySelector('#zoom-value');
 const MIN = 1, MAX = 5;
-let svg, zoom = 1, pan = {x:0,y:0}, data = [], pointers = new Map(), previous, pendingMarker;
+let svg, zoom = 1, pan = {x:0,y:0}, data = [], pointers = new Map(), previous, pendingMarker, cameraAnimation=0;
 function render() {
   if (!svg) return;
   const w = 1260 / zoom, h = 990 / zoom;
@@ -15,7 +15,27 @@ function render() {
   document.querySelector('#zoom-in').disabled = zoom >= MAX;
   updateMarkers();
 }
+const reducedMotion=matchMedia('(prefers-reduced-motion:reduce)');
+function stopCamera(){cancelAnimationFrame(cameraAnimation);cameraAnimation=0;}
+function flyTo(targetZoom,center){
+  stopCamera();
+  if(reducedMotion.matches||svg.classList.contains('motion-paused')){
+    zoom=targetZoom;pan={x:center.x-630/zoom,y:center.y-495/zoom};render();return;
+  }
+  const initial={zoom,x:pan.x+630/zoom,y:pan.y+495/zoom};
+  const started=performance.now();
+  function frame(now){
+    const progress=Math.min(1,(now-started)/260),ease=1-Math.pow(1-progress,3);
+    zoom=initial.zoom+(targetZoom-initial.zoom)*ease;
+    const cx=initial.x+(center.x-initial.x)*ease,cy=initial.y+(center.y-initial.y)*ease;
+    pan={x:cx-630/zoom,y:cy-495/zoom};render();
+    cameraAnimation=progress<1?requestAnimationFrame(frame):0;
+  }
+  updateMarkers();cameraAnimation=requestAnimationFrame(frame);
+}
+reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches)stopCamera();});
 function changeZoom(next, anchor) {
+  stopCamera();
   if (!svg) return;
   const before = anchor ? point(anchor.x,anchor.y) : {x:pan.x+630/zoom,y:pan.y+495/zoom};
   const old = zoom; zoom = Math.max(MIN,Math.min(MAX,next));
@@ -25,6 +45,7 @@ function changeZoom(next, anchor) {
   render();
 }
 function reset() {
+  stopCamera();
   zoom=1;pan={x:400,y:70};render();
   document.querySelectorAll('[data-location]').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.foot-trail,.space').forEach(g=>g.classList.remove('active','is-selected'));
@@ -40,6 +61,7 @@ function gesture() {
 }
 viewport.addEventListener('pointerdown',e=>{
   if (!svg || (e.pointerType==='mouse' && e.button!==0)) return;
+  stopCamera();
   const marker=e.target.closest?.('[data-marker]');
   pendingMarker=pointers.size?null:marker?{id:marker.dataset.marker,x:e.clientX,y:e.clientY}:null;
   pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
@@ -57,6 +79,7 @@ function release(e){const chosen=e.type==='pointerup'?pendingMarker:null;pending
 viewport.addEventListener('pointerup',release);viewport.addEventListener('pointercancel',release);viewport.addEventListener('lostpointercapture',release);
 viewport.addEventListener('wheel',e=>{if(!svg)return;e.preventDefault();changeZoom(zoom*Math.exp(-e.deltaY*.0015),{x:e.clientX,y:e.clientY});},{passive:false});
 viewport.addEventListener('keydown',e=>{
+  if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','=','-','0','Home'].includes(e.key))stopCamera();
   const step=70/zoom;
   if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','=','-','0','Home'].includes(e.key))e.preventDefault();
   if(e.key==='ArrowLeft')pan.x-=step;if(e.key==='ArrowRight')pan.x+=step;
@@ -70,7 +93,7 @@ function selectSpace(id){
   const s=data.find(s=>s.id===id);if(!s||!svg)return;
   document.querySelectorAll('.foot-trail').forEach(g=>g.classList.toggle('active',Boolean(s.entry)&&(g.id === (s.id==='informacoes'?'trail-acces-informations':'trail-acces-credenciamento') || g.id==='trail-liaison-principale')));
   document.querySelectorAll('.space').forEach(g=>g.classList.toggle('is-selected',g.dataset.space===s.id));
-  zoom=s.entry?2.4:2.8;pan={x:s.x+s.width/2-630/zoom,y:s.y+s.height/2-495/zoom};render();
+  flyTo(s.entry?2.4:2.8,{x:s.x+s.width/2,y:s.y+s.height/2});
   document.querySelectorAll('[data-location]').forEach(b=>b.classList.toggle('active',b.dataset.location===id));
   if(mobileSidebar.matches&&sidebarOpen){setSidebar(false);viewport.focus({preventScroll:true});}
   document.querySelector('#map-status').textContent=`${s.name}${s.floor?', '+s.floor:''} localizado no mapa.`;
@@ -87,8 +110,10 @@ async function load(){
     const doc=new DOMParser().parseFromString(markup,'image/svg+xml');
     if(doc.querySelector('parsererror'))throw new Error('Planta inválida');
     root.replaceChildren(document.importNode(doc.documentElement,true));svg=root.querySelector('svg');svg.setAttribute('role','group');data=spaces;reset();
+    svg.classList.toggle('document-idle',document.hidden);
+    svg.classList.toggle('motion-paused',document.body.classList.contains('animations-paused'));
     requestAnimationFrame(()=>{fitLabels();createMarkers();});
-    if(document.fonts)document.fonts.ready.then(()=>{fitLabels();updateMarkers();});
+    if(document.fonts)document.fonts.ready.then(()=>{fitLabels();markers.forEach(m=>m.wordWidth=null);updateMarkers();});
   }catch(error){document.querySelector('.load-error').hidden=false;console.error('Falha ao carregar mapa:',error);}
 }
 // Contrôle de largeur basé sur les métriques réelles SVG, après insertion au DOM.
@@ -107,6 +132,8 @@ const motionButton=document.querySelector('#toggle-motion');
 motionButton.onclick=()=>{
   if(!svg)return;
   const paused=svg.classList.toggle('motion-paused');
+  document.body.classList.toggle('animations-paused',paused);
+  if(paused)stopCamera();
   const label=paused?'Retomar animações':'Pausar animações';
   motionButton.setAttribute('aria-pressed',String(paused));
   motionButton.setAttribute('aria-label',label);motionButton.title=label;
@@ -196,7 +223,7 @@ function updateMarkers(){
   const bounds=viewport.getBoundingClientRect();
   for(const m of markers){
     m.group.style.display='';
-    const wordWidth=Math.max(...[...m.words.children].map(e=>e.getComputedTextLength()));
+    const wordWidth=m.wordWidth??(m.wordWidth=Math.max(...[...m.words.children].map(e=>e.getComputedTextLength())));
     const width=wordWidth+40,height=m.words.children.length>1?40:30;
     const roomSpan=m.rotated?m.record.height:m.record.width;
     const selected=m.region.classList.contains('is-selected');
@@ -219,6 +246,7 @@ function updateMarkers(){
     m.group.classList.toggle('marker-selected',selected);
   }
 }
+document.addEventListener('visibilitychange',()=>{svg?.classList.toggle('document-idle',document.hidden);if(document.hidden)stopCamera();});
 new ResizeObserver(()=>requestAnimationFrame(updateMarkers)).observe(viewport);
 document.querySelector('#retry').onclick=load;
 load();

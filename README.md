@@ -78,3 +78,7 @@ Detalhes do acabamento e verificação: `docs/checkpoint-03-acabamento-25d.md`.
 ## Etiquetas e tipografia
 
 Os ambientes recebem etiquetas com símbolos de categoria conforme o espaço disponível no zoom. Clique ou use Enter/Espaço para localizar o ambiente. Arrastar sobre uma etiqueta continua movimentando o mapa. Consulte `docs/checkpoint-04-marcadores-tipografia.md` para o escopo e a validação.
+
+## Animações
+
+As pegadas recebem uma sequência discreta de opacidade sem deslocamento. O botão de pausa controla pegadas e ícones; movimento reduzido mantém os elementos estáticos e torna o enquadramento imediato. A seleção aproxima o ambiente suavemente e os controles manuais interrompem o movimento. Consulte `docs/checkpoint-05-animacoes.md`.

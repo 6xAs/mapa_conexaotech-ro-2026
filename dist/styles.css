@@ -22,3 +22,14 @@
 #map-root .map-marker:hover .marker-surface,#map-root .map-marker:focus-visible .marker-surface,#map-root .marker-selected .marker-surface{stroke-opacity:1;stroke-width:2;fill:#fff}
 #map-root .map-marker:focus-visible .marker-surface{stroke-width:3}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+
+/* Short feedback; no labels or geographic points are displaced. */
+#map-root .marker-surface{transition:fill .16s ease,stroke-opacity .16s ease,stroke-width .16s ease}
+#map-root .space.is-selected>.room,#map-root .space.is-selected>.entry{animation:selection-confirm .32s ease-out}
+#map-root .marker-selected .marker-surface{animation:selection-confirm .32s ease-out}
+@keyframes selection-confirm{from{stroke-opacity:.45}to{stroke-opacity:1}}
+.sidebar:not([hidden]),.help-box:not([hidden]){animation:panel-reveal .16s ease-out}
+@keyframes panel-reveal{from{opacity:.65}to{opacity:1}}
+.map-controls button:active,.menu-toggle:active,.icon-button:active{background:#e7e0f4}
+.animations-paused .sidebar,.animations-paused .help-box,.animations-paused .marker-surface,.animations-paused .space>.room,.animations-paused .space>.entry{animation:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){.sidebar,.help-box,#map-root .space>.room,#map-root .space>.entry,#map-root .marker-surface{animation:none!important;transition:none!important}}
