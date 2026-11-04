@@ -161,6 +161,7 @@ function applySidebarMode(){
   sidebarBackdrop.hidden=!modal;
   document.querySelector('.map-area').inert=modal;
   document.querySelector('#site-header').inert=modal;
+  document.querySelector('#quick-nav').inert=modal;
   document.querySelector('footer').inert=modal;
   if(modal){sidebar.setAttribute('role','dialog');sidebar.setAttribute('aria-modal','true');}
   else{sidebar.removeAttribute('role');sidebar.removeAttribute('aria-modal');}
@@ -211,10 +212,10 @@ function createMarkers(){
     const anchor=rotated?{x:transform.e,y:transform.f}:{x:Number(first.getAttribute('x')),y:record.entry?Number(first.getAttribute('y')):(Number(names[0].getAttribute('y'))+Number(names.at(-1).getAttribute('y')))/2};
     let lines=record.id==='maker'?['Espaço','Maker']:record.entry?[record.name,'Entrada principal']:record.floor?[record.name.replace('Sala ','Sala '),record.floor]:[record.name];
     if(record.id==='sala-whashington')lines=['Sala Whashington',record.floor];
-    const group=svgElement('g',{class:`map-marker theme-${record.visualTheme}`,'data-marker':record.id,role:'button',tabindex:'-1','aria-label':`Localizar ${record.name}${record.floor?', '+record.floor:''}`,'aria-pressed':'false'});
+    const group=svgElement('g',{class:`map-marker theme-${record.visualTheme}`,'data-marker':record.id,role:'button',tabindex:'-1','aria-label':`Localizar ${record.name}${record.floor?', '+record.floor:''}${record.locationHint?', '+record.locationHint:''}`,'aria-pressed':'false'});
     const title=svgElement('title');title.textContent=`Localizar ${record.name}`;group.append(title);
     const bg=svgElement('rect',{class:'marker-surface',rx:'7'});group.append(bg);
-    const icon=svgElement('g',{class:'marker-symbol'});icon.append(svgElement('path',{d:symbols[record.visualTheme]||symbols.neutral}));group.append(icon);
+    const icon=svgElement('g',{class:'marker-symbol'});icon.append(svgElement('path',{d:record.category==='Bebedouros'?'M12 3C9 8 5 11 5 15a7 7 0 0 0 14 0c0-4-4-7-7-12Z':record.category==='Banheiros'?symbols.neutral:symbols[record.visualTheme]||symbols.neutral}));group.append(icon);
     const words=svgElement('g',{class:'marker-words'});
     lines.forEach((line,i)=>{const text=svgElement('text',{x:'0',y:String(i*14),'dominant-baseline':'middle',class:i&&record.id!=='maker'?'marker-caption':'marker-name'});text.textContent=line;words.append(text);});group.append(words);
     group.addEventListener('click',e=>{if(e.detail===0){e.stopPropagation();selectSpace(record.id);}});
@@ -269,12 +270,13 @@ function matches(record){
   if(category&&record.category!==category)return false;
   const query=normalize(searchInput.value);if(!query)return true;
   const aliases=record.id.startsWith('lab-')?`laboratorio ${parseInt(record.id.slice(4),10)}`:'';
-  const text=normalize(`${record.name} ${record.id} ${record.locationHint||''} ${aliases}`);
+  const text=normalize(`${record.name} ${record.id} ${record.locationHint||''} ${(record.searchTerms||[]).join(' ')} ${aliases}`);
   return query.split(' ').every(part=>text.includes(part))||text.replaceAll(' ','').includes(query.replaceAll(' ',''));
 }
 function initializeSearch(){
   categoryFilter.replaceChildren(new Option('Todas as categorias',''));
   [...new Set(data.map(s=>s.category))].sort((a,b)=>a.localeCompare(b,'pt-BR')).forEach(c=>categoryFilter.add(new Option(c,c)));
+  document.querySelectorAll('[data-count]').forEach(el=>el.textContent=String(data.filter(s=>s.category===el.dataset.count).length));
   renderResults();
 }
 function renderResults(){
@@ -283,11 +285,12 @@ function renderResults(){
   for(const s of list){
     const li=document.createElement('li'),button=document.createElement('button');button.type='button';button.className='result-button';button.dataset.result=s.id;
     const dot=document.createElement('i');dot.className=`dot ${s.visualTheme==='neutral'?'neutral':s.visualTheme}`;dot.setAttribute('aria-hidden','true');
-    const text=document.createElement('span'),name=document.createElement('strong'),sub=document.createElement('small');name.textContent=s.name;sub.textContent=s.locationHint||s.floor||s.category;text.append(name,sub);button.append(dot,text);button.onclick=()=>selectSpace(s.id);li.append(button);resultList.append(li);
+    const text=document.createElement('span'),name=document.createElement('strong'),sub=document.createElement('small');name.textContent=s.name;sub.textContent=[s.floor,s.locationHint||s.category].filter(Boolean).join(' · ');text.append(name,sub);button.append(dot,text);button.onclick=()=>selectSpace(s.id);li.append(button);resultList.append(li);
   }
   document.querySelector('#results-count').textContent=`${list.length} ${list.length===1?'local':'locais'}`;
   document.querySelector('#no-results').hidden=list.length>0;
   document.querySelector('#clear-search').hidden=!searchInput.value&&!categoryFilter.value;
+  document.querySelectorAll('[data-category]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.category===categoryFilter.value)));
   if(svg){
     data.forEach(s=>svg.querySelector(`#space-${s.id}`)?.classList.toggle('is-filtered',!matches(s)));
     updateMarkers();
@@ -296,6 +299,7 @@ function renderResults(){
 function clearSearch(focus=true){searchInput.value='';categoryFilter.value='';renderResults();if(focus)searchInput.focus();}
 searchInput.addEventListener('input',renderResults);categoryFilter.addEventListener('change',renderResults);
 document.querySelector('#clear-search').onclick=()=>clearSearch();
+document.querySelectorAll('[data-category]').forEach(button=>button.onclick=()=>{searchInput.value='';categoryFilter.value=button.dataset.category;renderResults();setSidebar(true);});
 document.querySelector('#search-form').onsubmit=e=>{e.preventDefault();const first=resultList.querySelector('button');if(first)first.click();};
 function attachSpaceInteractions(){
   for(const s of data){
@@ -319,10 +323,11 @@ function showDetails(record){
   const facts=document.querySelector('#detail-facts');facts.replaceChildren();
   function fact(label,value){const term=document.createElement('dt'),definition=document.createElement('dd');term.textContent=label;definition.textContent=value;facts.append(term,definition);}
   if(record.floor)fact('Pavimento',record.floor);
+  if(record.category==='Bebedouros')fact('Serviço','Água para beber');
   if(record.entry)fact('Acesso','Entrada principal confirmada');
   if(record.name.startsWith('Lab ')||record.name.startsWith('APG')||record.name.startsWith('Anfiteatro'))fact('Identificação na planta',record.name);
   if(!record.floor&&!record.entry)fact('Referência','Planta fornecida do evento');
-  document.querySelector('#detail-note').textContent=record.validation==='grafia-a-validar'?'Nome transcrito da planta; grafia ainda em validação.':record.category==='Estacionamento'?'Posição indicada pela inscrição na planta; não há setores oficiais informados.':record.id==='escadas'||record.id==='elevador'?'Acesso vertical indicado na planta. Percurso acessível não confirmado.':'Programação e informações complementares não foram fornecidas.';
+  document.querySelector('#detail-note').textContent=record.validation==='grafia-a-validar'?'Nome transcrito da planta; grafia ainda em validação.':record.category==='Bebedouros'?'Ponto de água indicado pelo símbolo na planta fornecida.':record.validation==='pavimento-confirmado-pelo-usuario'?'Pavimento confirmado: mesmo plano do Auditório e da Sala Whashington.':record.category==='Estacionamento'?'Posição indicada pela inscrição na planta; não há setores oficiais informados.':record.id==='escadas'||record.id==='elevador'?'Acesso vertical indicado na planta. Percurso acessível não confirmado.':'Programação e informações complementares não foram fornecidas.';
   document.querySelector('#detail-title').focus({preventScroll:true});
 }
 function closeDetails(returnFocus=true){

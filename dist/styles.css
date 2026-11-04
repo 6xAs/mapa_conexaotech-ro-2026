@@ -50,3 +50,16 @@
 .animations-paused .space-details{animation:none!important}@media(prefers-reduced-motion:reduce){.space-details{animation:none!important}}
 
 #map-root .space.is-selected>.room,#map-root .space.is-selected>.entry,#map-root .space.is-selected>.space-hit{vector-effect:non-scaling-stroke;stroke-width:2.5}
+
+/* Atalhos sempre visíveis, sem abrir a sidebar no carregamento. */
+body{grid-template-rows:80px 52px minmax(0,1fr) 36px}
+.quick-nav{display:flex;align-items:center;gap:8px;padding:6px 24px;background:#fff;border-bottom:1px solid var(--line);overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;min-width:0;z-index:4}
+.quick-nav-label{font-size:10px;color:#7b8798;margin-right:6px;white-space:nowrap}
+.quick-button{display:flex;align-items:center;gap:6px;border:1px solid #dce2eb;border-radius:8px;background:#fafbfe;padding:9px 12px;min-height:36px;font-size:10px;color:#53647b;white-space:nowrap;flex-shrink:0}
+.quick-button svg{width:15px;height:15px}.quick-button:hover,.quick-button[aria-pressed=true],.quick-button.active{background:#eee8f8;border-color:#b9a8d9;color:#533c89}
+.quick-button.water-quick,.category-card.water-quick{color:#206c8d;border-color:#b8dbe8;background:#f1fbff}
+.sidebar-categories{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 23px}.category-card{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:11px 9px;min-height:44px;border:1px solid #e0e4ed;border-radius:8px;background:#fafbfe;font-size:10px;text-align:left;color:#53647b}.category-card span{font-size:9px;color:#7d8a9c;white-space:nowrap}.category-card:hover,.category-card[aria-pressed=true],.category-card.active{border-color:#b09bce;background:#f2edf9;color:#533c89}
+.water{background:#247fa7;border-color:#247fa7}.water-point .water-sign{vector-effect:non-scaling-stroke}.space.is-filtered.water-point .water-sign{fill:#7598aa;stroke:#e4edf1}.space.is-selected.water-point .water-sign,.space.water-point:focus-visible .water-sign{stroke:#533c89;stroke-width:3;vector-effect:non-scaling-stroke}
+#space-banheiro-03>.room{fill:#eee6f8;stroke:#8b72b2;stroke-width:2}#space-banheiro-03 .floor-label{font-weight:750}
+@media(max-width:1000px){.quick-nav-label{display:none}.quick-nav{padding-inline:16px}}
+@media(max-width:700px){body{grid-template-rows:72px 52px minmax(0,1fr) auto}.quick-nav{padding-inline:12px;gap:7px}.quick-button{min-height:38px;font-size:11px;padding:8px 11px}.sidebar{top:124px}.sidebar-backdrop{top:124px}.sidebar-categories{gap:7px}.category-card{font-size:11px;padding:11px 8px}.category-card span{font-size:9px}.search-results{max-height:31vh}}

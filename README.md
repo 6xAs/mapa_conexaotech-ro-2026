@@ -86,3 +86,7 @@ As pegadas recebem uma sequência discreta de opacidade sem deslocamento. O bot�
 ## Busca e informações
 
 Abra “Explorar mapa” para buscar por nome/identificação e filtrar categorias. Selecione na lista ou no desenho para abrir as informações disponíveis. No celular, o painel fica na parte inferior; Escape ou o botão de fechar retornam ao mapa. O zoom chega a 800%. Consulte `docs/checkpoint-06-interatividade.md`.
+
+## Locais e pontos de água
+
+A navegação superior e os cartões da sidebar destacam categorias de locais. Os quatro bebedouros indicados na planta têm categoria própria e podem ser buscados por “água”. O banheiro acima do Credenciamento está identificado no 2º andar. A numeração dos anfiteatros foi corrigida: 01 à direita e 02 à esquerda. Veja `docs/ajustes-locais-bebedouros.md`.

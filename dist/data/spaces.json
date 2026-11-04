@@ -3,27 +3,29 @@
     "id": "anfiteatro-01",
     "name": "Anfiteatro 01",
     "category": "Anfiteatros",
-    "x": 1012,
+    "x": 1219,
     "y": 165,
     "width": 55,
     "height": 120,
-    "validation": "transcrito-da-referencia",
+    "validation": "posicao-corrigida-pelo-usuario",
     "vertical": true,
     "visualLevel": 1,
-    "visualTheme": "purple"
+    "visualTheme": "purple",
+    "locationHint": "À direita do bloco dos anfiteatros"
   },
   {
     "id": "anfiteatro-02",
     "name": "Anfiteatro 02",
     "category": "Anfiteatros",
-    "x": 1219,
+    "x": 1012,
     "y": 165,
     "width": 55,
     "height": 120,
-    "validation": "transcrito-da-referencia",
+    "validation": "posicao-corrigida-pelo-usuario",
     "vertical": true,
     "visualLevel": 1,
-    "visualTheme": "purple"
+    "visualTheme": "purple",
+    "locationHint": "À esquerda do bloco dos anfiteatros"
   },
   {
     "id": "apg-01",
@@ -275,7 +277,7 @@
   {
     "id": "banheiro-01",
     "name": "Banheiro",
-    "category": "Serviços",
+    "category": "Banheiros",
     "x": 714,
     "y": 582,
     "width": 24,
@@ -289,7 +291,7 @@
   {
     "id": "banheiro-02",
     "name": "Banheiro",
-    "category": "Serviços",
+    "category": "Banheiros",
     "x": 772,
     "y": 582,
     "width": 23,
@@ -303,20 +305,21 @@
   {
     "id": "banheiro-03",
     "name": "Banheiro",
-    "category": "Serviços",
+    "category": "Banheiros",
     "x": 1247,
     "y": 671,
     "width": 60,
     "height": 45,
-    "validation": "transcrito-da-referencia",
-    "visualLevel": 3,
-    "visualTheme": "neutral",
-    "locationHint": "Acima do Credenciamento"
+    "validation": "pavimento-confirmado-pelo-usuario",
+    "visualLevel": 2,
+    "visualTheme": "purple",
+    "locationHint": "No mesmo plano do Auditório e da Sala Whashington",
+    "floor": "2º andar"
   },
   {
     "id": "banheiro-04",
     "name": "Banheiro",
-    "category": "Serviços",
+    "category": "Banheiros",
     "x": 1247,
     "y": 832,
     "width": 62,
@@ -329,7 +332,7 @@
   {
     "id": "banheiro-05",
     "name": "Banheiro",
-    "category": "Serviços",
+    "category": "Banheiros",
     "x": 1354,
     "y": 815,
     "width": 61,
@@ -388,5 +391,81 @@
     "visualLevel": 3,
     "visualTheme": "neutral",
     "validation": "transcrito-da-referencia"
+  },
+  {
+    "id": "bebedouro-01",
+    "name": "Bebedouro",
+    "category": "Bebedouros",
+    "x": 716,
+    "y": 550,
+    "width": 24,
+    "height": 24,
+    "locationHint": "Próximo aos laboratórios centrais",
+    "visualLevel": 2,
+    "visualTheme": "cyan",
+    "validation": "simbolo-na-planta-identificado-pelo-usuario",
+    "searchTerms": [
+      "água",
+      "fonte de água",
+      "fontes de água",
+      "beber"
+    ]
+  },
+  {
+    "id": "bebedouro-02",
+    "name": "Bebedouro",
+    "category": "Bebedouros",
+    "x": 1214,
+    "y": 359,
+    "width": 24,
+    "height": 24,
+    "locationHint": "Entre os anfiteatros e a Cantina 02",
+    "visualLevel": 2,
+    "visualTheme": "cyan",
+    "validation": "simbolo-na-planta-identificado-pelo-usuario",
+    "searchTerms": [
+      "água",
+      "fonte de água",
+      "fontes de água",
+      "beber"
+    ]
+  },
+  {
+    "id": "bebedouro-03",
+    "name": "Bebedouro",
+    "category": "Bebedouros",
+    "x": 1392,
+    "y": 791,
+    "width": 24,
+    "height": 24,
+    "locationHint": "Próximo ao Elevador",
+    "visualLevel": 2,
+    "visualTheme": "cyan",
+    "validation": "simbolo-na-planta-identificado-pelo-usuario",
+    "searchTerms": [
+      "água",
+      "fonte de água",
+      "fontes de água",
+      "beber"
+    ]
+  },
+  {
+    "id": "bebedouro-04",
+    "name": "Bebedouro",
+    "category": "Bebedouros",
+    "x": 1438,
+    "y": 900,
+    "width": 24,
+    "height": 24,
+    "locationHint": "Corredor ao lado do Auditório",
+    "visualLevel": 2,
+    "visualTheme": "cyan",
+    "validation": "simbolo-na-planta-identificado-pelo-usuario",
+    "searchTerms": [
+      "água",
+      "fonte de água",
+      "fontes de água",
+      "beber"
+    ]
   }
 ]
