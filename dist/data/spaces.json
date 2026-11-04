@@ -283,7 +283,8 @@
     "validation": "transcrito-da-referencia",
     "vertical": true,
     "visualLevel": 3,
-    "visualTheme": "neutral"
+    "visualTheme": "neutral",
+    "locationHint": "Corredor central, banheiro à esquerda"
   },
   {
     "id": "banheiro-02",
@@ -296,7 +297,8 @@
     "validation": "transcrito-da-referencia",
     "vertical": true,
     "visualLevel": 3,
-    "visualTheme": "neutral"
+    "visualTheme": "neutral",
+    "locationHint": "Corredor central, banheiro à direita"
   },
   {
     "id": "banheiro-03",
@@ -308,7 +310,8 @@
     "height": 45,
     "validation": "transcrito-da-referencia",
     "visualLevel": 3,
-    "visualTheme": "neutral"
+    "visualTheme": "neutral",
+    "locationHint": "Acima do Credenciamento"
   },
   {
     "id": "banheiro-04",
@@ -320,7 +323,8 @@
     "height": 31,
     "validation": "transcrito-da-referencia",
     "visualLevel": 3,
-    "visualTheme": "neutral"
+    "visualTheme": "neutral",
+    "locationHint": "Abaixo do Credenciamento"
   },
   {
     "id": "banheiro-05",
@@ -332,7 +336,8 @@
     "height": 48,
     "validation": "transcrito-da-referencia",
     "visualLevel": 3,
-    "visualTheme": "neutral"
+    "visualTheme": "neutral",
+    "locationHint": "Acima do Lab 04"
   },
   {
     "id": "elevador",
@@ -345,5 +350,43 @@
     "validation": "transcrito-da-referencia",
     "visualLevel": 3,
     "visualTheme": "neutral"
+  },
+  {
+    "id": "estacionamento-esquerda",
+    "name": "Estacionamento",
+    "category": "Estacionamento",
+    "x": 478,
+    "y": 850,
+    "width": 375,
+    "height": 168,
+    "locationHint": "À esquerda da planta",
+    "visualLevel": 2,
+    "visualTheme": "neutral",
+    "validation": "inscricao-na-referencia"
+  },
+  {
+    "id": "estacionamento-direita",
+    "name": "Estacionamento",
+    "category": "Estacionamento",
+    "x": 888,
+    "y": 885,
+    "width": 310,
+    "height": 133,
+    "locationHint": "À direita da planta",
+    "visualLevel": 2,
+    "visualTheme": "neutral",
+    "validation": "inscricao-na-referencia"
+  },
+  {
+    "id": "escadas",
+    "name": "Escadas",
+    "category": "Circulação",
+    "x": 1278,
+    "y": 723,
+    "width": 114,
+    "height": 88,
+    "visualLevel": 3,
+    "visualTheme": "neutral",
+    "validation": "transcrito-da-referencia"
   }
 ]

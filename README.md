@@ -82,3 +82,7 @@ Os ambientes recebem etiquetas com símbolos de categoria conforme o espaço dis
 ## Animações
 
 As pegadas recebem uma sequência discreta de opacidade sem deslocamento. O botão de pausa controla pegadas e ícones; movimento reduzido mantém os elementos estáticos e torna o enquadramento imediato. A seleção aproxima o ambiente suavemente e os controles manuais interrompem o movimento. Consulte `docs/checkpoint-05-animacoes.md`.
+
+## Busca e informações
+
+Abra “Explorar mapa” para buscar por nome/identificação e filtrar categorias. Selecione na lista ou no desenho para abrir as informações disponíveis. No celular, o painel fica na parte inferior; Escape ou o botão de fechar retornam ao mapa. O zoom chega a 800%. Consulte `docs/checkpoint-06-interatividade.md`.
