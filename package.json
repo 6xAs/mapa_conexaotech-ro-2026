@@ -7,5 +7,7 @@
     "build": "node scripts/build.mjs",
     "check": "node --check dist/app.js && node scripts/build.mjs --check"
   },
-  "engines": {"node": ">=20"}
+  "engines": {
+    "node": "24.x"
+  }
 }

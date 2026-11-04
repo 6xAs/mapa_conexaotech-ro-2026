@@ -6,7 +6,7 @@ Mapa em SVG baseado na planta fornecida do evento na Faculdade Unisapiens. Vers�
 
 Abra `dist/index.html` em um navegador moderno, mantendo a pasta `dist` com seus arquivos. Não é necessário instalar dependências. Para servir por HTTP, use qualquer servidor estático apontado para `dist`.
 
-Para gerar um único HTML que contém as imagens, os dados, os estilos e o código, com Node.js 20 ou superior:
+Para gerar um único HTML que contém as imagens, os dados, os estilos e o código, com Node.js 24.x:
 
 ```sh
 npm run build
@@ -62,3 +62,9 @@ A grafia “Whashington”, pavimentos ambíguos e o significado dos símbolos a
 Desenvolvido e criado por [6xAs](https://my-user-profile.vercel.app).
 
 As marcas e a planta foram fornecidas para este projeto. Este repositório não concede licença de uso das marcas ou de redistribuição desses materiais.
+
+## Build na Vercel
+
+A configuração versionada em `vercel.json` define `dist` como pasta de publicação e executa `node scripts/build.mjs`. O Node está fixado na série 24.x pelo `package.json`. Como não há dependências, a instalação é omitida; o build não precisa invocar npm e evita o aviso de configuração `cache-dir` observado no ambiente. Se dependências forem adicionadas, revisar essa configuração.
+
+As branches de refinamento devem gerar apenas previews. A produção continua associada a `main`.
