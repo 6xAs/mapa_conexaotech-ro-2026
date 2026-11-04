@@ -1,12 +1,12 @@
 # ConexãoTech RO 2026 — Mapa interativo
 
-Mapa em SVG baseado na planta fornecida do evento na Faculdade Unisapiens. Versão em desenvolvimento, no Checkpoint 02, para conferência visual; ainda não é a versão oficial final.
+Mapa em SVG baseado na planta fornecida do evento na Faculdade Unisapiens. Versão com acabamento 2.5D, navegação por categorias e programação de 04/11, revisada para publicação.
 
 ## Abrir o projeto
 
 Abra `dist/index.html` em um navegador moderno, mantendo a pasta `dist` com seus arquivos. Não é necessário instalar dependências. Para servir por HTTP, use qualquer servidor estático apontado para `dist`.
 
-Para gerar um único HTML que contém as imagens, os dados, os estilos e o código, com Node.js 20 ou superior:
+Para gerar um único HTML que contém as imagens, os dados, os estilos e o código, com Node.js 24.x:
 
 ```sh
 npm run build
@@ -46,7 +46,7 @@ Depois de editar o SVG ou os dados, execute `npm run build` para atualizar a có
 npm run check
 ```
 
-Verifica sintaxe JavaScript, dados, entradas principais e sincronização do HTML. A conferência visual em desktop/celular e os testes em dispositivos reais continuam pendentes por limitações do ambiente de desenvolvimento.
+Verifica sintaxe JavaScript, dados, entradas principais e sincronização do HTML. O refinamento v2 foi validado em Chromium automatizado, com desktop, celular, tablet e paisagem. Veja `docs/checkpoint-02-hierarquia.md`. Testes em aparelhos físicos e outros navegadores permanecem pendentes.
 
 ## Próximos checkpoints
 
@@ -62,3 +62,39 @@ A grafia “Whashington”, pavimentos ambíguos e o significado dos símbolos a
 Desenvolvido e criado por [6xAs](https://my-user-profile.vercel.app).
 
 As marcas e a planta foram fornecidas para este projeto. Este repositório não concede licença de uso das marcas ou de redistribuição desses materiais.
+
+## Build na Vercel
+
+A configuração versionada em `vercel.json` define `dist` como pasta de publicação e executa `node scripts/build.mjs`. O Node está fixado na série 24.x pelo `package.json`. Como não há dependências, a instalação é omitida; o build não precisa invocar npm e evita o aviso de configuração `cache-dir` observado no ambiente. Se dependências forem adicionadas, revisar essa configuração.
+
+As branches de refinamento devem gerar apenas previews. A produção continua associada a `main`.
+
+## Refinamento visual v2
+
+A sidebar inicia retraída; use “Explorar mapa” para abrir as entradas, os atalhos e a legenda. No celular, o painel fecha após escolher um atalho. As cores diferenciam as prioridades sem alterar a geometria da planta. O acabamento 2.5D acrescenta volumes estilizados, materiais, vegetação e veículos nas posições indicadas pela referência. Não representa levantamento arquitetônico de alturas ou fachadas reais.
+
+Detalhes do acabamento e verificação: `docs/checkpoint-03-acabamento-25d.md`.
+
+## Etiquetas e tipografia
+
+Os ambientes recebem etiquetas com símbolos de categoria conforme o espaço disponível no zoom. Clique ou use Enter/Espaço para localizar o ambiente. Arrastar sobre uma etiqueta continua movimentando o mapa. Consulte `docs/checkpoint-04-marcadores-tipografia.md` para o escopo e a validação.
+
+## Animações
+
+As pegadas recebem uma sequência discreta de opacidade sem deslocamento. O botão de pausa controla pegadas e ícones; movimento reduzido mantém os elementos estáticos e torna o enquadramento imediato. A seleção aproxima o ambiente suavemente e os controles manuais interrompem o movimento. Consulte `docs/checkpoint-05-animacoes.md`.
+
+## Busca e informações
+
+Abra “Explorar mapa” para buscar por nome/identificação e filtrar categorias. Selecione na lista ou no desenho para abrir as informações disponíveis. No celular, o painel fica na parte inferior; Escape ou o botão de fechar retornam ao mapa. O zoom chega a 800%. Consulte `docs/checkpoint-06-interatividade.md`.
+
+## Locais e pontos de água
+
+A navegação superior e os cartões da sidebar destacam categorias de locais. Os quatro bebedouros indicados na planta têm categoria própria e podem ser buscados por “água”. O banheiro acima do Credenciamento está identificado no 2º andar. A numeração dos anfiteatros foi corrigida: 01 à direita e 02 à esquerda. Veja `docs/ajustes-locais-bebedouros.md`.
+
+## Programação de 04/11
+
+O roteiro fornecido foi associado a 11 espaços. Use o atalho “Programação · 04/11” ou abra um ambiente para consultar as atividades no painel existente. Títulos e palestrantes também podem ser pesquisados. Os dados ficam em `dist/data/programacao.json`; o build valida as associações e incorpora a agenda ao HTML. O horário sem atividade no Anfiteatro 02 está sinalizado. No bloco central, o Lab 03 foi removido e sua área incorporada ao Lab 02; Labs 04/05 mantidos conforme o roteiro. Veja `docs/programacao-04-11.md`.
+
+## Revisão final
+
+O Checkpoint 07 reúne a verificação funcional, os ajustes de contraste e a conferência de acessibilidade automática. Consulte `docs/checkpoint-07-qualidade-final.md` para o escopo e os limites dos testes.

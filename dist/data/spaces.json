@@ -3,23 +3,29 @@
     "id": "anfiteatro-01",
     "name": "Anfiteatro 01",
     "category": "Anfiteatros",
-    "x": 1012,
+    "x": 1219,
     "y": 165,
     "width": 55,
     "height": 120,
-    "validation": "transcrito-da-referencia",
-    "vertical": true
+    "validation": "posicao-corrigida-pelo-usuario",
+    "vertical": true,
+    "visualLevel": 1,
+    "visualTheme": "purple",
+    "locationHint": "À direita do bloco dos anfiteatros"
   },
   {
     "id": "anfiteatro-02",
     "name": "Anfiteatro 02",
     "category": "Anfiteatros",
-    "x": 1219,
+    "x": 1012,
     "y": 165,
     "width": 55,
     "height": 120,
-    "validation": "transcrito-da-referencia",
-    "vertical": true
+    "validation": "posicao-corrigida-pelo-usuario",
+    "vertical": true,
+    "visualLevel": 1,
+    "visualTheme": "purple",
+    "locationHint": "À esquerda do bloco dos anfiteatros"
   },
   {
     "id": "apg-01",
@@ -29,7 +35,9 @@
     "y": 191,
     "width": 56,
     "height": 89,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 1,
+    "visualTheme": "purple"
   },
   {
     "id": "apg-02",
@@ -39,7 +47,9 @@
     "y": 191,
     "width": 56,
     "height": 89,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 1,
+    "visualTheme": "purple"
   },
   {
     "id": "passarela-quadra",
@@ -50,7 +60,9 @@
     "width": 50,
     "height": 212,
     "validation": "transcrito-da-referencia",
-    "vertical": true
+    "vertical": true,
+    "visualLevel": 3,
+    "visualTheme": "neutral"
   },
   {
     "id": "entrada-superior",
@@ -60,7 +72,9 @@
     "y": 322,
     "width": 85,
     "height": 32,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 3,
+    "visualTheme": "neutral"
   },
   {
     "id": "cantina-01",
@@ -70,7 +84,9 @@
     "y": 391,
     "width": 94,
     "height": 70,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 2,
+    "visualTheme": "orange"
   },
   {
     "id": "maker",
@@ -80,7 +96,9 @@
     "y": 392,
     "width": 195,
     "height": 70,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 1,
+    "visualTheme": "purple"
   },
   {
     "id": "cantina-02",
@@ -91,27 +109,21 @@
     "width": 148,
     "height": 152,
     "validation": "transcrito-da-referencia",
-    "points": "1154,389 1216,389 1259,432 1259,498 1216,541 1154,541 1111,498 1111,432"
-  },
-  {
-    "id": "lab-03",
-    "name": "Lab 03",
-    "category": "Laboratórios",
-    "x": 800,
-    "y": 523,
-    "width": 51,
-    "height": 57,
-    "validation": "transcrito-da-referencia"
+    "points": "1154,389 1216,389 1259,432 1259,498 1216,541 1154,541 1111,498 1111,432",
+    "visualLevel": 2,
+    "visualTheme": "orange"
   },
   {
     "id": "lab-02",
     "name": "Lab 02",
     "category": "Laboratórios",
-    "x": 851,
+    "x": 800,
     "y": 523,
-    "width": 60,
+    "width": 111,
     "height": 57,
-    "validation": "transcrito-da-referencia"
+    "validation": "area-ampliada-pelo-usuario",
+    "visualLevel": 1,
+    "visualTheme": "blue"
   },
   {
     "id": "lab-01",
@@ -121,7 +133,9 @@
     "y": 523,
     "width": 101,
     "height": 57,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 1,
+    "visualTheme": "blue"
   },
   {
     "id": "piscina",
@@ -131,7 +145,9 @@
     "y": 437,
     "width": 87,
     "height": 183,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 2,
+    "visualTheme": "cyan"
   },
   {
     "id": "recepcao",
@@ -141,7 +157,9 @@
     "y": 717,
     "width": 86,
     "height": 38,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 2,
+    "visualTheme": "neutral"
   },
   {
     "id": "informacoes",
@@ -152,7 +170,9 @@
     "width": 87,
     "height": 94,
     "validation": "entrada-principal-confirmada-pelo-usuario",
-    "entry": true
+    "entry": true,
+    "visualLevel": 1,
+    "visualTheme": "green"
   },
   {
     "id": "credenciamento",
@@ -163,7 +183,9 @@
     "width": 81,
     "height": 85,
     "validation": "entrada-principal-confirmada-pelo-usuario",
-    "entry": true
+    "entry": true,
+    "visualLevel": 1,
+    "visualTheme": "green"
   },
   {
     "id": "cobertura",
@@ -173,7 +195,9 @@
     "y": 797,
     "width": 186,
     "height": 83,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 2,
+    "visualTheme": "neutral"
   },
   {
     "id": "passarela",
@@ -184,18 +208,26 @@
     "width": 35,
     "height": 138,
     "validation": "transcrito-da-referencia",
-    "vertical": true
+    "vertical": true,
+    "visualLevel": 3,
+    "visualTheme": "neutral"
   },
   {
     "id": "sala-whashington",
-    "name": "Sala Whashington",
+    "name": "Sala Washington",
     "category": "Ambientes",
     "x": 1505,
     "y": 718,
     "width": 106,
     "height": 96,
-    "validation": "grafia-a-validar",
-    "floor": "2º andar"
+    "validation": "nome-confirmado-no-roteiro",
+    "floor": "2º andar",
+    "visualLevel": 2,
+    "visualTheme": "neutral",
+    "searchTerms": [
+      "Whashington",
+      "Washington"
+    ]
   },
   {
     "id": "auditorio",
@@ -206,7 +238,9 @@
     "width": 149,
     "height": 189,
     "validation": "transcrito-da-referencia",
-    "floor": "2º andar"
+    "floor": "2º andar",
+    "visualLevel": 1,
+    "visualTheme": "purple"
   },
   {
     "id": "lab-04",
@@ -216,7 +250,9 @@
     "y": 864,
     "width": 61,
     "height": 67,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 1,
+    "visualTheme": "blue"
   },
   {
     "id": "lab-05",
@@ -226,59 +262,77 @@
     "y": 941,
     "width": 61,
     "height": 62,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 1,
+    "visualTheme": "blue"
   },
   {
     "id": "banheiro-01",
     "name": "Banheiro",
-    "category": "Serviços",
+    "category": "Banheiros",
     "x": 714,
     "y": 582,
     "width": 24,
     "height": 56,
     "validation": "transcrito-da-referencia",
-    "vertical": true
+    "vertical": true,
+    "visualLevel": 3,
+    "visualTheme": "neutral",
+    "locationHint": "Corredor central, banheiro à esquerda"
   },
   {
     "id": "banheiro-02",
     "name": "Banheiro",
-    "category": "Serviços",
+    "category": "Banheiros",
     "x": 772,
     "y": 582,
     "width": 23,
     "height": 56,
     "validation": "transcrito-da-referencia",
-    "vertical": true
+    "vertical": true,
+    "visualLevel": 3,
+    "visualTheme": "neutral",
+    "locationHint": "Corredor central, banheiro à direita"
   },
   {
     "id": "banheiro-03",
     "name": "Banheiro",
-    "category": "Serviços",
+    "category": "Banheiros",
     "x": 1247,
     "y": 671,
     "width": 60,
     "height": 45,
-    "validation": "transcrito-da-referencia"
+    "validation": "pavimento-confirmado-pelo-usuario",
+    "visualLevel": 2,
+    "visualTheme": "purple",
+    "locationHint": "No mesmo plano do Auditório e da Sala Washington",
+    "floor": "2º andar"
   },
   {
     "id": "banheiro-04",
     "name": "Banheiro",
-    "category": "Serviços",
+    "category": "Banheiros",
     "x": 1247,
     "y": 832,
     "width": 62,
     "height": 31,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 3,
+    "visualTheme": "neutral",
+    "locationHint": "Abaixo do Credenciamento"
   },
   {
     "id": "banheiro-05",
     "name": "Banheiro",
-    "category": "Serviços",
+    "category": "Banheiros",
     "x": 1354,
     "y": 815,
     "width": 61,
     "height": 48,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 3,
+    "visualTheme": "neutral",
+    "locationHint": "Acima do Lab 04"
   },
   {
     "id": "elevador",
@@ -288,6 +342,122 @@
     "y": 763,
     "width": 35,
     "height": 29,
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 3,
+    "visualTheme": "neutral"
+  },
+  {
+    "id": "estacionamento-esquerda",
+    "name": "Estacionamento",
+    "category": "Estacionamento",
+    "x": 478,
+    "y": 850,
+    "width": 375,
+    "height": 168,
+    "locationHint": "À esquerda da planta",
+    "visualLevel": 2,
+    "visualTheme": "neutral",
+    "validation": "inscricao-na-referencia"
+  },
+  {
+    "id": "estacionamento-direita",
+    "name": "Estacionamento",
+    "category": "Estacionamento",
+    "x": 888,
+    "y": 885,
+    "width": 310,
+    "height": 133,
+    "locationHint": "À direita da planta",
+    "visualLevel": 2,
+    "visualTheme": "neutral",
+    "validation": "inscricao-na-referencia"
+  },
+  {
+    "id": "escadas",
+    "name": "Escadas",
+    "category": "Circulação",
+    "x": 1278,
+    "y": 723,
+    "width": 114,
+    "height": 88,
+    "visualLevel": 3,
+    "visualTheme": "neutral",
     "validation": "transcrito-da-referencia"
+  },
+  {
+    "id": "bebedouro-01",
+    "name": "Bebedouro",
+    "category": "Bebedouros",
+    "x": 716,
+    "y": 550,
+    "width": 24,
+    "height": 24,
+    "locationHint": "Próximo aos laboratórios centrais",
+    "visualLevel": 2,
+    "visualTheme": "cyan",
+    "validation": "simbolo-na-planta-identificado-pelo-usuario",
+    "searchTerms": [
+      "água",
+      "fonte de água",
+      "fontes de água",
+      "beber"
+    ]
+  },
+  {
+    "id": "bebedouro-02",
+    "name": "Bebedouro",
+    "category": "Bebedouros",
+    "x": 1214,
+    "y": 359,
+    "width": 24,
+    "height": 24,
+    "locationHint": "Entre os anfiteatros e a Cantina 02",
+    "visualLevel": 2,
+    "visualTheme": "cyan",
+    "validation": "simbolo-na-planta-identificado-pelo-usuario",
+    "searchTerms": [
+      "água",
+      "fonte de água",
+      "fontes de água",
+      "beber"
+    ]
+  },
+  {
+    "id": "bebedouro-03",
+    "name": "Bebedouro",
+    "category": "Bebedouros",
+    "x": 1392,
+    "y": 791,
+    "width": 24,
+    "height": 24,
+    "locationHint": "Próximo ao Elevador",
+    "visualLevel": 2,
+    "visualTheme": "cyan",
+    "validation": "simbolo-na-planta-identificado-pelo-usuario",
+    "searchTerms": [
+      "água",
+      "fonte de água",
+      "fontes de água",
+      "beber"
+    ]
+  },
+  {
+    "id": "bebedouro-04",
+    "name": "Bebedouro",
+    "category": "Bebedouros",
+    "x": 1438,
+    "y": 900,
+    "width": 24,
+    "height": 24,
+    "locationHint": "Corredor ao lado do Auditório",
+    "visualLevel": 2,
+    "visualTheme": "cyan",
+    "validation": "simbolo-na-planta-identificado-pelo-usuario",
+    "searchTerms": [
+      "água",
+      "fonte de água",
+      "fontes de água",
+      "beber"
+    ]
   }
 ]
