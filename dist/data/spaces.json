@@ -8,7 +8,9 @@
     "width": 55,
     "height": 120,
     "validation": "transcrito-da-referencia",
-    "vertical": true
+    "vertical": true,
+    "visualLevel": 1,
+    "visualTheme": "purple"
   },
   {
     "id": "anfiteatro-02",
@@ -19,7 +21,9 @@
     "width": 55,
     "height": 120,
     "validation": "transcrito-da-referencia",
-    "vertical": true
+    "vertical": true,
+    "visualLevel": 1,
+    "visualTheme": "purple"
   },
   {
     "id": "apg-01",
@@ -29,7 +33,9 @@
     "y": 191,
     "width": 56,
     "height": 89,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 1,
+    "visualTheme": "purple"
   },
   {
     "id": "apg-02",
@@ -39,7 +45,9 @@
     "y": 191,
     "width": 56,
     "height": 89,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 1,
+    "visualTheme": "purple"
   },
   {
     "id": "passarela-quadra",
@@ -50,7 +58,9 @@
     "width": 50,
     "height": 212,
     "validation": "transcrito-da-referencia",
-    "vertical": true
+    "vertical": true,
+    "visualLevel": 3,
+    "visualTheme": "neutral"
   },
   {
     "id": "entrada-superior",
@@ -60,7 +70,9 @@
     "y": 322,
     "width": 85,
     "height": 32,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 3,
+    "visualTheme": "neutral"
   },
   {
     "id": "cantina-01",
@@ -70,7 +82,9 @@
     "y": 391,
     "width": 94,
     "height": 70,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 2,
+    "visualTheme": "orange"
   },
   {
     "id": "maker",
@@ -80,7 +94,9 @@
     "y": 392,
     "width": 195,
     "height": 70,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 1,
+    "visualTheme": "purple"
   },
   {
     "id": "cantina-02",
@@ -91,7 +107,9 @@
     "width": 148,
     "height": 152,
     "validation": "transcrito-da-referencia",
-    "points": "1154,389 1216,389 1259,432 1259,498 1216,541 1154,541 1111,498 1111,432"
+    "points": "1154,389 1216,389 1259,432 1259,498 1216,541 1154,541 1111,498 1111,432",
+    "visualLevel": 2,
+    "visualTheme": "orange"
   },
   {
     "id": "lab-03",
@@ -101,7 +119,9 @@
     "y": 523,
     "width": 51,
     "height": 57,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 1,
+    "visualTheme": "blue"
   },
   {
     "id": "lab-02",
@@ -111,7 +131,9 @@
     "y": 523,
     "width": 60,
     "height": 57,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 1,
+    "visualTheme": "blue"
   },
   {
     "id": "lab-01",
@@ -121,7 +143,9 @@
     "y": 523,
     "width": 101,
     "height": 57,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 1,
+    "visualTheme": "blue"
   },
   {
     "id": "piscina",
@@ -131,7 +155,9 @@
     "y": 437,
     "width": 87,
     "height": 183,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 2,
+    "visualTheme": "cyan"
   },
   {
     "id": "recepcao",
@@ -141,7 +167,9 @@
     "y": 717,
     "width": 86,
     "height": 38,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 2,
+    "visualTheme": "neutral"
   },
   {
     "id": "informacoes",
@@ -152,7 +180,9 @@
     "width": 87,
     "height": 94,
     "validation": "entrada-principal-confirmada-pelo-usuario",
-    "entry": true
+    "entry": true,
+    "visualLevel": 1,
+    "visualTheme": "green"
   },
   {
     "id": "credenciamento",
@@ -163,7 +193,9 @@
     "width": 81,
     "height": 85,
     "validation": "entrada-principal-confirmada-pelo-usuario",
-    "entry": true
+    "entry": true,
+    "visualLevel": 1,
+    "visualTheme": "green"
   },
   {
     "id": "cobertura",
@@ -173,7 +205,9 @@
     "y": 797,
     "width": 186,
     "height": 83,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 2,
+    "visualTheme": "neutral"
   },
   {
     "id": "passarela",
@@ -184,7 +218,9 @@
     "width": 35,
     "height": 138,
     "validation": "transcrito-da-referencia",
-    "vertical": true
+    "vertical": true,
+    "visualLevel": 3,
+    "visualTheme": "neutral"
   },
   {
     "id": "sala-whashington",
@@ -195,7 +231,9 @@
     "width": 106,
     "height": 96,
     "validation": "grafia-a-validar",
-    "floor": "2º andar"
+    "floor": "2º andar",
+    "visualLevel": 2,
+    "visualTheme": "neutral"
   },
   {
     "id": "auditorio",
@@ -206,7 +244,9 @@
     "width": 149,
     "height": 189,
     "validation": "transcrito-da-referencia",
-    "floor": "2º andar"
+    "floor": "2º andar",
+    "visualLevel": 1,
+    "visualTheme": "purple"
   },
   {
     "id": "lab-04",
@@ -216,7 +256,9 @@
     "y": 864,
     "width": 61,
     "height": 67,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 1,
+    "visualTheme": "blue"
   },
   {
     "id": "lab-05",
@@ -226,7 +268,9 @@
     "y": 941,
     "width": 61,
     "height": 62,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 1,
+    "visualTheme": "blue"
   },
   {
     "id": "banheiro-01",
@@ -237,7 +281,9 @@
     "width": 24,
     "height": 56,
     "validation": "transcrito-da-referencia",
-    "vertical": true
+    "vertical": true,
+    "visualLevel": 3,
+    "visualTheme": "neutral"
   },
   {
     "id": "banheiro-02",
@@ -248,7 +294,9 @@
     "width": 23,
     "height": 56,
     "validation": "transcrito-da-referencia",
-    "vertical": true
+    "vertical": true,
+    "visualLevel": 3,
+    "visualTheme": "neutral"
   },
   {
     "id": "banheiro-03",
@@ -258,7 +306,9 @@
     "y": 671,
     "width": 60,
     "height": 45,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 3,
+    "visualTheme": "neutral"
   },
   {
     "id": "banheiro-04",
@@ -268,7 +318,9 @@
     "y": 832,
     "width": 62,
     "height": 31,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 3,
+    "visualTheme": "neutral"
   },
   {
     "id": "banheiro-05",
@@ -278,7 +330,9 @@
     "y": 815,
     "width": 61,
     "height": 48,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 3,
+    "visualTheme": "neutral"
   },
   {
     "id": "elevador",
@@ -288,6 +342,8 @@
     "y": 763,
     "width": 35,
     "height": 29,
-    "validation": "transcrito-da-referencia"
+    "validation": "transcrito-da-referencia",
+    "visualLevel": 3,
+    "visualTheme": "neutral"
   }
 ]

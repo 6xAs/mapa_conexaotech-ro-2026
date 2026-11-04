@@ -25,8 +25,8 @@ function changeZoom(next, anchor) {
 }
 function reset() {
   zoom=1;pan={x:400,y:70};render();
-  document.querySelectorAll('.entry-link').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.foot-trail').forEach(g=>g.classList.remove('active'));
+  document.querySelectorAll('[data-location]').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.foot-trail,.space').forEach(g=>g.classList.remove('active','is-selected'));
 }
 function point(x,y) {
   return new DOMPoint(x,y).matrixTransform(svg.getScreenCTM().inverse());
@@ -61,11 +61,13 @@ viewport.addEventListener('keydown',e=>{
 document.querySelector('#zoom-in').onclick=()=>changeZoom(zoom*1.25);
 document.querySelector('#zoom-out').onclick=()=>changeZoom(zoom/1.25);
 document.querySelector('#reset').onclick=reset;
-document.querySelectorAll('.entry-link').forEach(button=>button.onclick=()=>{
+document.querySelectorAll('[data-location]').forEach(button=>button.onclick=()=>{
   const s=data.find(s=>s.id===button.dataset.location);if(!s||!svg)return;
-  document.querySelectorAll('.foot-trail').forEach(g=>g.classList.toggle('active',g.id === (s.id==='informacoes'?'trail-acces-informations':'trail-acces-credenciamento') || g.id==='trail-liaison-principale'));
-  zoom=2.4;pan={x:s.x+s.width/2-630/zoom,y:s.y+s.height/2-495/zoom};render();
-  document.querySelectorAll('.entry-link').forEach(b=>b.classList.toggle('active',b===button));
+  document.querySelectorAll('.foot-trail').forEach(g=>g.classList.toggle('active',Boolean(s.entry)&&(g.id === (s.id==='informacoes'?'trail-acces-informations':'trail-acces-credenciamento') || g.id==='trail-liaison-principale')));
+  document.querySelectorAll('.space').forEach(g=>g.classList.toggle('is-selected',g.dataset.space===s.id));
+  zoom=s.entry?2.4:2.8;pan={x:s.x+s.width/2-630/zoom,y:s.y+s.height/2-495/zoom};render();
+  document.querySelectorAll('[data-location]').forEach(b=>b.classList.toggle('active',b===button));
+  if(mobileSidebar.matches){setSidebar(false);viewport.focus({preventScroll:true});}
 });
 const help=document.querySelector('#help');
 help.onclick=()=>{const open=help.getAttribute('aria-expanded')!=='true';help.setAttribute('aria-expanded',String(open));document.querySelector('#map-help').hidden=!open;};
@@ -103,5 +105,45 @@ motionButton.onclick=()=>{
   motionButton.setAttribute('aria-label',label);motionButton.title=label;
   document.querySelector('#motion-glyph').setAttribute('d',paused?'M8 5l11 7-11 7Z':'M9 5v14M15 5v14');
 };
+// A navegação começa recolhida em toda visita; não depende de armazenamento local.
+const sidebar=document.querySelector('#explore-sidebar');
+const sidebarToggle=document.querySelector('#sidebar-toggle');
+const sidebarClose=document.querySelector('#sidebar-close');
+const sidebarBackdrop=document.querySelector('#sidebar-backdrop');
+const layout=document.querySelector('#map-layout');
+const mobileSidebar=matchMedia('(max-width:700px)');
+let sidebarOpen=false;
+function applySidebarMode(){
+  const modal=sidebarOpen&&mobileSidebar.matches;
+  sidebarBackdrop.hidden=!modal;
+  document.querySelector('.map-area').inert=modal;
+  document.querySelector('#site-header').inert=modal;
+  document.querySelector('footer').inert=modal;
+  if(modal){sidebar.setAttribute('role','dialog');sidebar.setAttribute('aria-modal','true');}
+  else{sidebar.removeAttribute('role');sidebar.removeAttribute('aria-modal');}
+}
+function setSidebar(open){
+  sidebarOpen=open;
+  sidebar.hidden=!open;sidebar.inert=!open;
+  sidebarToggle.setAttribute('aria-expanded',String(open));
+  layout.classList.toggle('sidebar-open',open);
+  applySidebarMode();
+  if(open)sidebarClose.focus({preventScroll:true});
+  else sidebarToggle.focus({preventScroll:true});
+}
+sidebarToggle.onclick=()=>setSidebar(!sidebarOpen);
+sidebarClose.onclick=()=>setSidebar(false);
+sidebarBackdrop.onclick=()=>setSidebar(false);
+mobileSidebar.addEventListener('change',()=>{applySidebarMode();if(sidebarOpen&&mobileSidebar.matches)sidebarClose.focus({preventScroll:true});});
+document.addEventListener('keydown',e=>{
+  if(!sidebarOpen)return;
+  if(e.key==='Escape'){e.preventDefault();setSidebar(false);return;}
+  if(e.key==='Tab'&&mobileSidebar.matches){
+    const items=[...sidebar.querySelectorAll('button,a[href]')].filter(el=>!el.disabled);
+    const first=items[0],last=items[items.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+  }
+});
 document.querySelector('#retry').onclick=load;
 load();

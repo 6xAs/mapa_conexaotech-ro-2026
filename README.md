@@ -1,6 +1,6 @@
 # ConexãoTech RO 2026 — Mapa interativo
 
-Mapa em SVG baseado na planta fornecida do evento na Faculdade Unisapiens. Versão em desenvolvimento, no Checkpoint 02, para conferência visual; ainda não é a versão oficial final.
+Mapa em SVG baseado na planta fornecida do evento na Faculdade Unisapiens. Versão em desenvolvimento, com hierarquia visual v2 no Checkpoint 02, para conferência visual; ainda não é a versão oficial final.
 
 ## Abrir o projeto
 
@@ -46,7 +46,7 @@ Depois de editar o SVG ou os dados, execute `npm run build` para atualizar a có
 npm run check
 ```
 
-Verifica sintaxe JavaScript, dados, entradas principais e sincronização do HTML. A conferência visual em desktop/celular e os testes em dispositivos reais continuam pendentes por limitações do ambiente de desenvolvimento.
+Verifica sintaxe JavaScript, dados, entradas principais e sincronização do HTML. O refinamento v2 foi validado em Chromium automatizado, com desktop, celular, tablet e paisagem. Veja `docs/checkpoint-02-hierarquia.md`. Testes em aparelhos físicos e outros navegadores permanecem pendentes.
 
 ## Próximos checkpoints
 
@@ -68,3 +68,7 @@ As marcas e a planta foram fornecidas para este projeto. Este repositório não 
 A configuração versionada em `vercel.json` define `dist` como pasta de publicação e executa `node scripts/build.mjs`. O Node está fixado na série 24.x pelo `package.json`. Como não há dependências, a instalação é omitida; o build não precisa invocar npm e evita o aviso de configuração `cache-dir` observado no ambiente. Se dependências forem adicionadas, revisar essa configuração.
 
 As branches de refinamento devem gerar apenas previews. A produção continua associada a `main`.
+
+## Refinamento visual v2
+
+A sidebar inicia retraída; use “Explorar mapa” para abrir as entradas, os atalhos e a legenda. No celular, o painel fecha após escolher um atalho. As cores diferenciam as prioridades sem alterar a geometria da planta. A etapa de evolução isométrica ainda depende do próximo checkpoint.
