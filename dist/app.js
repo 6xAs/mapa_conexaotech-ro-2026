@@ -3,7 +3,7 @@ const viewport = document.querySelector('#viewport');
 const root = document.querySelector('#map-root');
 const value = document.querySelector('#zoom-value');
 const MIN = 1, MAX = 5;
-let svg, zoom = 1, pan = {x:0,y:0}, data = [], pointers = new Map(), previous;
+let svg, zoom = 1, pan = {x:0,y:0}, data = [], pointers = new Map(), previous, pendingMarker;
 function render() {
   if (!svg) return;
   const w = 1260 / zoom, h = 990 / zoom;
@@ -13,6 +13,7 @@ function render() {
   value.textContent = `${Math.round(zoom * 100)}%`;
   document.querySelector('#zoom-out').disabled = zoom <= MIN;
   document.querySelector('#zoom-in').disabled = zoom >= MAX;
+  updateMarkers();
 }
 function changeZoom(next, anchor) {
   if (!svg) return;
@@ -27,6 +28,7 @@ function reset() {
   zoom=1;pan={x:400,y:70};render();
   document.querySelectorAll('[data-location]').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.foot-trail,.space').forEach(g=>g.classList.remove('active','is-selected'));
+  updateMarkers();
 }
 function point(x,y) {
   return new DOMPoint(x,y).matrixTransform(svg.getScreenCTM().inverse());
@@ -38,17 +40,20 @@ function gesture() {
 }
 viewport.addEventListener('pointerdown',e=>{
   if (!svg || (e.pointerType==='mouse' && e.button!==0)) return;
+  const marker=e.target.closest?.('[data-marker]');
+  pendingMarker=pointers.size?null:marker?{id:marker.dataset.marker,x:e.clientX,y:e.clientY}:null;
   pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
   viewport.setPointerCapture(e.pointerId);previous=gesture();viewport.classList.add('dragging');
 });
 viewport.addEventListener('pointermove',e=>{
   if(!pointers.has(e.pointerId)||!svg)return;
+  if(pendingMarker&&Math.hypot(e.clientX-pendingMarker.x,e.clientY-pendingMarker.y)>6)pendingMarker=null;
   pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});const next=gesture();
   if(previous.distance>0 && next.distance>0)changeZoom(zoom*next.distance/previous.distance,{x:previous.x,y:previous.y});
   const a=point(previous.x,previous.y),b=point(next.x,next.y);
   pan.x-=b.x-a.x;pan.y-=b.y-a.y;render();previous=next;
 });
-function release(e){pointers.delete(e.pointerId);previous=pointers.size?gesture():null;if(!pointers.size)viewport.classList.remove('dragging');}
+function release(e){const chosen=e.type==='pointerup'?pendingMarker:null;pendingMarker=null;pointers.delete(e.pointerId);previous=pointers.size?gesture():null;if(!pointers.size){viewport.classList.remove('dragging');if(chosen)selectSpace(chosen.id);}}
 viewport.addEventListener('pointerup',release);viewport.addEventListener('pointercancel',release);viewport.addEventListener('lostpointercapture',release);
 viewport.addEventListener('wheel',e=>{if(!svg)return;e.preventDefault();changeZoom(zoom*Math.exp(-e.deltaY*.0015),{x:e.clientX,y:e.clientY});},{passive:false});
 viewport.addEventListener('keydown',e=>{
@@ -61,14 +66,16 @@ viewport.addEventListener('keydown',e=>{
 document.querySelector('#zoom-in').onclick=()=>changeZoom(zoom*1.25);
 document.querySelector('#zoom-out').onclick=()=>changeZoom(zoom/1.25);
 document.querySelector('#reset').onclick=reset;
-document.querySelectorAll('[data-location]').forEach(button=>button.onclick=()=>{
-  const s=data.find(s=>s.id===button.dataset.location);if(!s||!svg)return;
+function selectSpace(id){
+  const s=data.find(s=>s.id===id);if(!s||!svg)return;
   document.querySelectorAll('.foot-trail').forEach(g=>g.classList.toggle('active',Boolean(s.entry)&&(g.id === (s.id==='informacoes'?'trail-acces-informations':'trail-acces-credenciamento') || g.id==='trail-liaison-principale')));
   document.querySelectorAll('.space').forEach(g=>g.classList.toggle('is-selected',g.dataset.space===s.id));
   zoom=s.entry?2.4:2.8;pan={x:s.x+s.width/2-630/zoom,y:s.y+s.height/2-495/zoom};render();
-  document.querySelectorAll('[data-location]').forEach(b=>b.classList.toggle('active',b===button));
-  if(mobileSidebar.matches){setSidebar(false);viewport.focus({preventScroll:true});}
-});
+  document.querySelectorAll('[data-location]').forEach(b=>b.classList.toggle('active',b.dataset.location===id));
+  if(mobileSidebar.matches&&sidebarOpen){setSidebar(false);viewport.focus({preventScroll:true});}
+  document.querySelector('#map-status').textContent=`${s.name}${s.floor?', '+s.floor:''} localizado no mapa.`;
+}
+document.querySelectorAll('[data-location]').forEach(button=>button.onclick=()=>selectSpace(button.dataset.location));
 const help=document.querySelector('#help');
 help.onclick=()=>{const open=help.getAttribute('aria-expanded')!=='true';help.setAttribute('aria-expanded',String(open));document.querySelector('#map-help').hidden=!open;};
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){help.setAttribute('aria-expanded','false');document.querySelector('#map-help').hidden=true;}});
@@ -79,9 +86,9 @@ async function load(){
     const spaces=JSON.parse(document.querySelector('#spaces-data').textContent);
     const doc=new DOMParser().parseFromString(markup,'image/svg+xml');
     if(doc.querySelector('parsererror'))throw new Error('Planta inválida');
-    root.replaceChildren(document.importNode(doc.documentElement,true));svg=root.querySelector('svg');data=spaces;reset();
-    requestAnimationFrame(fitLabels);
-    if(document.fonts)document.fonts.ready.then(fitLabels);
+    root.replaceChildren(document.importNode(doc.documentElement,true));svg=root.querySelector('svg');svg.setAttribute('role','group');data=spaces;reset();
+    requestAnimationFrame(()=>{fitLabels();createMarkers();});
+    if(document.fonts)document.fonts.ready.then(()=>{fitLabels();updateMarkers();});
   }catch(error){document.querySelector('.load-error').hidden=false;console.error('Falha ao carregar mapa:',error);}
 }
 // Contrôle de largeur basé sur les métriques réelles SVG, après insertion au DOM.
@@ -145,5 +152,73 @@ document.addEventListener('keydown',e=>{
     else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
   }
 });
+// Etiquetas na mesma camada vetorial, com tamanho legível conforme o zoom.
+const markerNS='http://www.w3.org/2000/svg';
+let markers=[];
+function svgElement(tag,attributes={}){
+  const element=document.createElementNS(markerNS,tag);
+  Object.entries(attributes).forEach(([key,value])=>element.setAttribute(key,value));return element;
+}
+function createMarkers(){
+  svg.querySelector('#map-markers')?.remove();markers=[];
+  const layer=svgElement('g',{id:'map-markers','aria-label':'Identificações dos ambientes'});
+  svg.querySelector('#camera').append(layer);
+  const symbols={purple:'M4 16V8l8-4 8 4v8l-8 4Z M12 4v16M4 8l8 4 8-4',blue:'M3 4h18v13H3ZM8 21h8M12 17v4',green:'M13 4h7v16h-7M3 12h12M9 7l5 5-5 5',orange:'M3 11h18M4 9c1-8 15-8 16 0ZM4 15h16v5H4Z',cyan:'M2 16q3-4 6 0t6 0 6 0M2 21q3-4 6 0t6 0 6 0M6 4h12',neutral:'M5 4h14v16H5ZM9 8h6M9 12h6M9 16h6'};
+  for(const record of data){
+    const region=svg.querySelector(`#space-${record.id}`);
+    if(!region)continue;
+    const labels=[...region.querySelectorAll('.room-label')];if(!labels.length)continue;
+    const names=record.id==='maker'?labels.slice(0,2):record.entry?labels:record.floor?labels:labels.slice(0,1);
+    // Anchor follows the existing label, so no geographic point is guessed.
+    const first=labels[0];const rotated=Boolean(record.vertical);
+    const transform=first.transform.baseVal.consolidate()?.matrix;
+    const anchor=rotated?{x:transform.e,y:transform.f}:{x:Number(first.getAttribute('x')),y:record.entry?Number(first.getAttribute('y')):(Number(names[0].getAttribute('y'))+Number(names.at(-1).getAttribute('y')))/2};
+    let lines=record.id==='maker'?['Espaço','Maker']:record.entry?[record.name,'Entrada principal']:record.floor?[record.name.replace('Sala ','Sala '),record.floor]:[record.name];
+    if(record.id==='sala-whashington')lines=['Sala Whashington',record.floor];
+    const group=svgElement('g',{class:`map-marker theme-${record.visualTheme}`,'data-marker':record.id,role:'button',tabindex:'-1','aria-label':`Localizar ${record.name}${record.floor?', '+record.floor:''}`,'aria-pressed':'false'});
+    const title=svgElement('title');title.textContent=`Localizar ${record.name}`;group.append(title);
+    const bg=svgElement('rect',{class:'marker-surface',rx:'7'});group.append(bg);
+    const icon=svgElement('g',{class:'marker-symbol'});icon.append(svgElement('path',{d:symbols[record.visualTheme]||symbols.neutral}));group.append(icon);
+    const words=svgElement('g',{class:'marker-words'});
+    lines.forEach((line,i)=>{const text=svgElement('text',{x:'0',y:String(i*14),'dominant-baseline':'middle',class:i&&record.id!=='maker'?'marker-caption':'marker-name'});text.textContent=line;words.append(text);});group.append(words);
+    group.addEventListener('click',e=>{if(e.detail===0){e.stopPropagation();selectSpace(record.id);}});
+    group.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();selectSpace(record.id);}});
+
+    layer.append(group);
+    markers.push({record,region,group,bg,icon,words,names,anchor,rotated});
+  }
+  updateMarkers();
+}
+function updateMarkers(){
+  if(!svg||!markers.length)return;
+  const matrix=svg.getScreenCTM();if(!matrix)return;
+  const scale=Math.hypot(matrix.a,matrix.b);if(!scale)return;
+  const bounds=viewport.getBoundingClientRect();
+  for(const m of markers){
+    m.group.style.display='';
+    const wordWidth=Math.max(...[...m.words.children].map(e=>e.getComputedTextLength()));
+    const width=wordWidth+40,height=m.words.children.length>1?40:30;
+    const roomSpan=m.rotated?m.record.height:m.record.width;
+    const selected=m.region.classList.contains('is-selected');
+    const fits=(width+6<=roomSpan*scale)&&(height+4<=(m.rotated?m.record.width:m.record.height)*scale);
+    // Show a full label only when it fits its room; otherwise retain the original text.
+    const point=new DOMPoint(m.anchor.x,m.anchor.y).matrixTransform(matrix);
+    const halfWidth=(m.rotated?height:width)/2,halfHeight=(m.rotated?width:height)/2;
+    const onScreen=point.x-halfWidth>=bounds.left+2&&point.x+halfWidth<=bounds.right-2&&point.y-halfHeight>=bounds.top+2&&point.y+halfHeight<=bounds.bottom-2;
+    const visible=fits&&onScreen;
+    m.group.style.display=visible?'':'none';
+    m.group.setAttribute('tabindex',visible?'0':'-1');m.group.setAttribute('aria-hidden',String(!visible));
+    m.group.setAttribute('aria-pressed',String(selected));
+    m.names.forEach(e=>e.style.visibility=visible?'hidden':'');
+    if(!visible)continue;
+    const x=m.anchor.x,y=m.anchor.y;
+    m.group.setAttribute('transform',`translate(${x} ${y}) rotate(${m.rotated?-90:0}) scale(${1/scale})`);
+    m.bg.setAttribute('x',-width/2);m.bg.setAttribute('y',-height/2);m.bg.setAttribute('width',width);m.bg.setAttribute('height',height);
+    m.icon.setAttribute('transform',`translate(${-width/2+9} -8) scale(.65)`);
+    m.words.setAttribute('transform',`translate(${-width/2+31} ${m.words.children.length>1?-7:0})`);
+    m.group.classList.toggle('marker-selected',selected);
+  }
+}
+new ResizeObserver(()=>requestAnimationFrame(updateMarkers)).observe(viewport);
 document.querySelector('#retry').onclick=load;
 load();

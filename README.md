@@ -74,3 +74,7 @@ As branches de refinamento devem gerar apenas previews. A produção continua as
 A sidebar inicia retraída; use “Explorar mapa” para abrir as entradas, os atalhos e a legenda. No celular, o painel fecha após escolher um atalho. As cores diferenciam as prioridades sem alterar a geometria da planta. O acabamento 2.5D acrescenta volumes estilizados, materiais, vegetação e veículos nas posições indicadas pela referência. Não representa levantamento arquitetônico de alturas ou fachadas reais.
 
 Detalhes do acabamento e verificação: `docs/checkpoint-03-acabamento-25d.md`.
+
+## Etiquetas e tipografia
+
+Os ambientes recebem etiquetas com símbolos de categoria conforme o espaço disponível no zoom. Clique ou use Enter/Espaço para localizar o ambiente. Arrastar sobre uma etiqueta continua movimentando o mapa. Consulte `docs/checkpoint-04-marcadores-tipografia.md` para o escopo e a validação.
