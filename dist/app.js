@@ -199,7 +199,7 @@ function svgElement(tag,attributes={}){
 }
 function createMarkers(){
   svg.querySelector('#map-markers')?.remove();markers=[];
-  const layer=svgElement('g',{id:'map-markers','aria-label':'Identificações dos ambientes'});
+  const layer=svgElement('g',{id:'map-markers',role:'group','aria-label':'Identificações dos ambientes'});
   svg.querySelector('#camera').append(layer);
   const symbols={purple:'M4 16V8l8-4 8 4v8l-8 4Z M12 4v16M4 8l8 4 8-4',blue:'M3 4h18v13H3ZM8 21h8M12 17v4',green:'M13 4h7v16h-7M3 12h12M9 7l5 5-5 5',orange:'M3 11h18M4 9c1-8 15-8 16 0ZM4 15h16v5H4Z',cyan:'M2 16q3-4 6 0t6 0 6 0M2 21q3-4 6 0t6 0 6 0M6 4h12',neutral:'M5 4h14v16H5ZM9 8h6M9 12h6M9 16h6'};
   for(const record of data){

@@ -1,6 +1,6 @@
 # ConexãoTech RO 2026 — Mapa interativo
 
-Mapa em SVG baseado na planta fornecida do evento na Faculdade Unisapiens. Versão em desenvolvimento, com hierarquia visual v2 no Checkpoint 02, para conferência visual; ainda não é a versão oficial final.
+Mapa em SVG baseado na planta fornecida do evento na Faculdade Unisapiens. Versão com acabamento 2.5D, navegação por categorias e programação de 04/11, revisada para publicação.
 
 ## Abrir o projeto
 
@@ -94,3 +94,7 @@ A navegação superior e os cartões da sidebar destacam categorias de locais. O
 ## Programação de 04/11
 
 O roteiro fornecido foi associado a 11 espaços. Use o atalho “Programação · 04/11” ou abra um ambiente para consultar as atividades no painel existente. Títulos e palestrantes também podem ser pesquisados. Os dados ficam em `dist/data/programacao.json`; o build valida as associações e incorpora a agenda ao HTML. O horário sem atividade no Anfiteatro 02 está sinalizado. No bloco central, o Lab 03 foi removido e sua área incorporada ao Lab 02; Labs 04/05 mantidos conforme o roteiro. Veja `docs/programacao-04-11.md`.
+
+## Revisão final
+
+O Checkpoint 07 reúne a verificação funcional, os ajustes de contraste e a conferência de acessibilidade automática. Consulte `docs/checkpoint-07-qualidade-final.md` para o escopo e os limites dos testes.
