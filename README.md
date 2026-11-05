@@ -103,6 +103,6 @@ O Checkpoint 07 reúne a verificação funcional, os ajustes de contraste e a co
 
 O filtro “Data da programação”, em “Explorar mapa”, alterna entre 04/11 e 05/11. A data padrão é 05/11. Os dados de 04/11 foram preservados integralmente em `days`, dentro de `dist/data/programacao.json`; buscas, filtro de locais com programação e painéis usam somente o dia selecionado. Locais ausentes no roteiro do dia mostram um aviso de ausência de atividade ou oficina.
 
-O `ROTEIRO 05_11.pdf` contém 13 horários em oito locais. O Auditório tem a última atividade às 20h40. O documento informa a mesma atividade de Janus Pantoja às 19h no Anfiteatro 02 e no Lab 02; ambos os registros foram preservados, sem inferir uma correção. Lab 01, Lab 05 e APG 01 não têm programação em 05/11, mas mantêm as atividades de 04/11.
+O `ROTEIRO 05_11 (1).pdf` contém 14 horários em oito locais, incluindo “Gestão com Azure Devops”, com Alexandra Natacha Assunção Francisco, às 21h no Anfiteatro 01. O Auditório tem a última atividade às 20h40. O documento informa a mesma atividade de Janus Pantoja às 19h no Anfiteatro 02 e no Lab 02; ambos os registros foram preservados, sem inferir uma correção. Lab 01, Lab 05 e APG 01 não têm programação em 05/11, mas mantêm as atividades de 04/11.
 
 Validação desta alteração: build, check, preservação integral dos dados anteriores e testes em Chromium da troca de datas, isolamento das buscas, contagem de locais, painel sem atividade e restauração da agenda anterior, horário do Auditório e filtro em tela mobile sem rolagem horizontal.
