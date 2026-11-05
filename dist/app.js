@@ -3,7 +3,8 @@ const viewport = document.querySelector('#viewport');
 const root = document.querySelector('#map-root');
 const value = document.querySelector('#zoom-value');
 const MIN = 1, MAX = 8;
-const program=JSON.parse(document.querySelector('#program-data').textContent);
+const programs=JSON.parse(document.querySelector('#program-data').textContent);
+let program=programs.days.find(day=>day.date===programs.defaultDate);
 let svg, zoom = 1, pan = {x:0,y:0}, center={x:1030,y:565}, data = [], pointers = new Map(), previous, pendingMarker, cameraAnimation=0;
 function render() {
   if (!svg) return;
@@ -262,6 +263,20 @@ new ResizeObserver(()=>requestAnimationFrame(render)).observe(viewport);
 // Busca e informações usam somente os registros da planta.
 const searchInput=document.querySelector('#space-search');
 const programOnly=document.querySelector('#program-only');
+const programDate=document.querySelector('#program-date');
+programDate.replaceChildren(...[...programs.days].sort((a,b)=>b.date.localeCompare(a.date)).map(day=>new Option(day.dateLabel,day.date)));
+programDate.value=program.date;
+function updateProgramDate(){
+  document.querySelector('#program-date-label').textContent=`Programação · ${program.dateLabel}`;
+  document.querySelector('#open-program').textContent=`Programação · ${program.dateLabel}`;
+  document.querySelector('#program-only-label').textContent=`Com programação em ${program.dateLabel}`;
+}
+updateProgramDate();
+programDate.addEventListener('change',()=>{
+  program=programs.days.find(day=>day.date===programDate.value);
+  updateProgramDate();renderResults();
+  if(selectedId&&!detailPanel.hidden)renderProgram(data.find(record=>record.id===selectedId));
+});
 const categoryFilter=document.querySelector('#category-filter');
 const resultList=document.querySelector('#search-results');
 const detailPanel=document.querySelector('#space-details');
@@ -354,7 +369,7 @@ function renderProgram(record){
   }
   const note=document.querySelector('#detail-note');
   if(events.length)note.textContent='Horários de término não informados no roteiro.';
-  else if(note.textContent==='Programação e informações complementares não foram fornecidas.')note.textContent=`Não há programação deste espaço no roteiro de ${program.dateLabel}.`;
+  else note.textContent=`Não há atividade ou oficina programada para este local em ${program.dateLabel}, conforme o roteiro do dia.`;
   detailPanel.scrollTop=0;
 }
 function closeDetails(returnFocus=true){

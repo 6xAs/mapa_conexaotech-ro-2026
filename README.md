@@ -1,6 +1,6 @@
 # ConexãoTech RO 2026 — Mapa interativo
 
-Mapa em SVG baseado na planta fornecida do evento na Faculdade Unisapiens. Versão com acabamento 2.5D, navegação por categorias e programação de 04/11, revisada para publicação.
+Mapa em SVG baseado na planta fornecida do evento na Faculdade Unisapiens. Versão com acabamento 2.5D, navegação por categorias e programação de 04/11 e 05/11, revisada para publicação.
 
 ## Abrir o projeto
 
@@ -98,3 +98,11 @@ O roteiro fornecido foi associado a 11 espaços. Use o atalho “Programação �
 ## Revisão final
 
 O Checkpoint 07 reúne a verificação funcional, os ajustes de contraste e a conferência de acessibilidade automática. Consulte `docs/checkpoint-07-qualidade-final.md` para o escopo e os limites dos testes.
+
+## Programação de 05/11 e filtro de data
+
+O filtro “Data da programação”, em “Explorar mapa”, alterna entre 04/11 e 05/11. A data padrão é 05/11. Os dados de 04/11 foram preservados integralmente em `days`, dentro de `dist/data/programacao.json`; buscas, filtro de locais com programação e painéis usam somente o dia selecionado. Locais ausentes no roteiro do dia mostram um aviso de ausência de atividade ou oficina.
+
+O `ROTEIRO 05_11.pdf` contém 13 horários em oito locais. O Auditório tem a última atividade às 20h40. O documento informa a mesma atividade de Janus Pantoja às 19h no Anfiteatro 02 e no Lab 02; ambos os registros foram preservados, sem inferir uma correção. Lab 01, Lab 05 e APG 01 não têm programação em 05/11, mas mantêm as atividades de 04/11.
+
+Validação desta alteração: build, check, preservação integral dos dados anteriores e testes em Chromium da troca de datas, isolamento das buscas, contagem de locais, painel sem atividade e restauração da agenda anterior, horário do Auditório e filtro em tela mobile sem rolagem horizontal.

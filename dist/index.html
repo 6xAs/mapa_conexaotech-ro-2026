@@ -1,18 +1,18 @@
 <!doctype html>
 <html lang="pt-BR">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#152c35"><meta name="description" content="Mapa do ConexãoTech RO 2026, baseado na planta fornecida. Programação de 04/11 e localização dos espaços."><title>Mapa • ConexãoTech RO 2026</title><link rel="icon" href="data:,"><link rel="stylesheet" href="styles.css"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#152c35"><meta name="description" content="Mapa do ConexãoTech RO 2026, baseado na planta fornecida. Programação de 04/11 e 05/11 e localização dos espaços."><title>Mapa • ConexãoTech RO 2026</title><link rel="icon" href="data:,"><link rel="stylesheet" href="styles.css"></head>
 <body>
-<header class="topbar" id="site-header"><div class="brand"><img src="assets/logos/evento-roxo.png" alt="Conexão Tech.RO" width="152" height="46"><span class="year">2026</span></div><button class="menu-toggle" id="sidebar-toggle" aria-expanded="false" aria-controls="explore-sidebar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>Explorar mapa</span></button><div class="header-title">Mapa do evento<span>Faculdade Unisapiens</span></div><span class="preview">Programação · 04/11</span></header>
-<nav class="quick-nav" id="quick-nav" aria-label="Localizar espaços por categoria"><span class="quick-nav-label">Onde você quer ir?</span><button type="button" class="quick-button agenda-quick" id="open-program">Programação · 04/11</button><button type="button" class="quick-button water-quick" data-category="Bebedouros" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C9 8 5 11 5 15a7 7 0 0 0 14 0c0-4-4-7-7-12Z"/></svg>Bebedouros</button><button type="button" class="quick-button" data-category="Banheiros" aria-pressed="false">Banheiros</button><button type="button" class="quick-button" data-category="Anfiteatros" aria-pressed="false">Anfiteatros</button><button type="button" class="quick-button" data-category="Laboratórios" aria-pressed="false">Laboratórios</button><button type="button" class="quick-button" data-location="auditorio">Auditório</button><button type="button" class="quick-button" data-category="Entradas principais" aria-pressed="false">Entradas</button><button type="button" class="quick-button" data-category="" aria-pressed="true">Todos os locais</button></nav>
+<header class="topbar" id="site-header"><div class="brand"><img src="assets/logos/evento-roxo.png" alt="Conexão Tech.RO" width="152" height="46"><span class="year">2026</span></div><button class="menu-toggle" id="sidebar-toggle" aria-expanded="false" aria-controls="explore-sidebar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>Explorar mapa</span></button><div class="header-title">Mapa do evento<span>Faculdade Unisapiens</span></div><span class="preview" id="program-date-label">Programação · 05/11</span></header>
+<nav class="quick-nav" id="quick-nav" aria-label="Localizar espaços por categoria"><span class="quick-nav-label">Onde você quer ir?</span><button type="button" class="quick-button agenda-quick" id="open-program">Programação · 05/11</button><button type="button" class="quick-button water-quick" data-category="Bebedouros" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C9 8 5 11 5 15a7 7 0 0 0 14 0c0-4-4-7-7-12Z"/></svg>Bebedouros</button><button type="button" class="quick-button" data-category="Banheiros" aria-pressed="false">Banheiros</button><button type="button" class="quick-button" data-category="Anfiteatros" aria-pressed="false">Anfiteatros</button><button type="button" class="quick-button" data-category="Laboratórios" aria-pressed="false">Laboratórios</button><button type="button" class="quick-button" data-location="auditorio">Auditório</button><button type="button" class="quick-button" data-category="Entradas principais" aria-pressed="false">Entradas</button><button type="button" class="quick-button" data-category="" aria-pressed="true">Todos os locais</button></nav>
 <main id="map-layout">
 <button class="sidebar-backdrop" id="sidebar-backdrop" aria-label="Fechar exploração do mapa" hidden tabindex="-1"></button>
 <aside class="sidebar" id="explore-sidebar" aria-labelledby="guide-title" hidden inert><div class="sidebar-heading"><div><h1 id="guide-title">Explore o evento</h1><p>Escolha por onde começar.</p></div><button id="sidebar-close" class="icon-button" aria-label="Fechar exploração do mapa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div>
 <nav class="sidebar-categories" aria-label="Atalhos de locais"><button type="button" data-category="Bebedouros" aria-pressed="false" class="category-card water-quick">Bebedouros<span data-count="Bebedouros"></span></button><button type="button" data-category="Banheiros" aria-pressed="false" class="category-card">Banheiros<span data-count="Banheiros"></span></button><button type="button" data-category="Anfiteatros" aria-pressed="false" class="category-card">Anfiteatros<span data-count="Anfiteatros"></span></button><button type="button" data-category="Laboratórios" aria-pressed="false" class="category-card">Laboratórios<span data-count="Laboratórios"></span></button><button type="button" data-location="auditorio" class="category-card">Auditório<span>2º andar</span></button><button type="button" data-category="Entradas principais" aria-pressed="false" class="category-card">Entradas<span data-count="Entradas principais"></span></button></nav>
-<form class="search-tools" id="search-form" role="search"><label for="space-search">Buscar um espaço</label><div class="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg><input id="space-search" type="search" placeholder="Nome, laboratório, APG…" autocomplete="off" enterkeyhint="search"></div><label for="category-filter">Categoria</label><select id="category-filter"><option value="">Todas as categorias</option></select><label class="program-filter"><input type="checkbox" id="program-only"> Com programação em 04/11</label><button type="button" id="clear-search" class="text-button" hidden>Limpar busca e filtros</button></form>
+<form class="search-tools" id="search-form" role="search"><label for="space-search">Buscar um espaço</label><div class="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg><input id="space-search" type="search" placeholder="Nome, laboratório, APG…" autocomplete="off" enterkeyhint="search"></div><label for="category-filter">Categoria</label><select id="category-filter"><option value="">Todas as categorias</option></select><label for="program-date">Data da programação</label><select id="program-date"><option value="2026-11-05" selected>05/11</option><option value="2026-11-04">04/11</option></select><label class="program-filter"><input type="checkbox" id="program-only"> <span id="program-only-label">Com programação em 05/11</span></label><button type="button" id="clear-search" class="text-button" hidden>Limpar busca e filtros</button></form>
 <section class="search-section" aria-labelledby="results-title"><div class="results-heading"><h2 id="results-title">Espaços do mapa</h2><span id="results-count" role="status" aria-live="polite"></span></div><ul id="search-results" class="search-results"></ul><p id="no-results" hidden>Nenhum espaço encontrado. Tente outro nome ou categoria.</p></section>
 <section class="entries" aria-labelledby="entries-title"><h2 id="entries-title">Entradas principais</h2><button class="entry-link" data-location="credenciamento"><span class="entry-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></span><span><strong>Credenciamento</strong><small>Acesso junto ao bloco do auditório</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></button><button class="entry-link" data-location="informacoes"><span class="entry-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></span><span><strong>Informações</strong><small>Acesso próximo à recepção</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></button></section>
 <section class="key" aria-labelledby="key-title"><h2 id="key-title">Leitura do mapa</h2><div><i class="swatch purple"></i>Maker, auditório, anfiteatros e APGs</div><div><i class="swatch blue"></i>Laboratórios</div><div><i class="swatch green"></i>Entradas principais</div><div><i class="swatch orange"></i>Alimentação</div><div><i class="swatch pool"></i>Piscina</div><div><i class="swatch water"></i>Bebedouros</div><div><i class="swatch unnamed"></i>Estruturas sem identificação</div><p class="legend-note">As pegadas indicam a circulação ilustrada na planta.</p></section>
-<div class="sidebar-bottom"><img src="assets/logos/unisapiens.png" alt="Faculdade Unisapiens" width="150" height="29"><p>ConexãoTech RO 2026.<br>Programação disponível: 04/11.</p></div></aside>
+<div class="sidebar-bottom"><img src="assets/logos/unisapiens.png" alt="Faculdade Unisapiens" width="150" height="29"><p>ConexãoTech RO 2026.<br>Programação disponível: 04/11 e 05/11.</p></div></aside>
 <section class="map-area" aria-label="Visualização do mapa"><div class="map-heading"><span><i></i> Planta do evento</span><button id="help" aria-expanded="false" aria-controls="map-help">Como navegar <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/></svg></button></div>
 <div id="map-help" class="help-box" hidden>Arraste para explorar. Use + e − para aproximar e afastar. No celular, use dois dedos. Com o mapa em foco, use as setas e as teclas + e −. “Ver mapa inteiro” restaura o enquadramento. As pegadas reproduzem a circulação ilustrada na planta; não são rotas calculadas. O botão de pausa interrompe a flutuação dos ícones e a animação das pegadas. As pegadas são ilustrativas: não indicam rotas de evacuação ou acessibilidade.</div>
 <div id="viewport" tabindex="0" role="region" aria-label="Mapa navegável. Use setas para mover, mais e menos para zoom." aria-describedby="instructions"><div id="map-root"></div><p id="map-status" class="sr-only" role="status" aria-live="polite"></p><div class="load-error" hidden>Não foi possível carregar a planta. <button id="retry">Tentar novamente</button></div></div>
@@ -22,220 +22,380 @@
 </section></main>
 <footer><span class="stage">ConexãoTech RO 2026</span><a href="https://my-user-profile.vercel.app" target="_blank" rel="noopener noreferrer">Desenvolvido e criado por 6xAs <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a></footer>
 <script type="application/json" id="program-data">{
-  "date": "2026-11-04",
-  "dateLabel": "04/11",
-  "timezone": "America/Manaus",
-  "source": "ROTEIRO 04_11.pdf",
-  "dateBasis": "dia-04-confirmado-pelo-usuario",
-  "events": [
+  "defaultDate": "2026-11-05",
+  "days": [
     {
-      "spaceId": "auditorio",
-      "start": "18:50",
-      "title": "Governança Baseada em Evidências: A Ciência de Dados na Gestão do TJRO",
-      "speakers": [
-        "Diego Souza"
-      ],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "informado"
+      "date": "2026-11-04",
+      "dateLabel": "04/11",
+      "timezone": "America/Manaus",
+      "source": "ROTEIRO 04_11.pdf",
+      "dateBasis": "dia-04-confirmado-pelo-usuario",
+      "events": [
+        {
+          "spaceId": "auditorio",
+          "start": "18:50",
+          "title": "Governança Baseada em Evidências: A Ciência de Dados na Gestão do TJRO",
+          "speakers": [
+            "Diego Souza"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "auditorio",
+          "start": "19:55",
+          "title": "Dados Públicos: o superpoder que ninguém usa, certo?",
+          "speakers": [
+            "André Dhiogo"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "auditorio",
+          "start": "21:00",
+          "title": "Aplicação das Principais Metodologias de Gestão e Negócios combinadas com a Análise Exploratória de Dados (AED) e a Inteligência Artificial na Melhoria da Tomada de Decisão",
+          "speakers": [
+            "Prof. Me. Carlos André Barbosa de Jesus"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "sala-whashington",
+          "start": "18:50",
+          "title": "INTELIGÊNCIA ARTIFICIAL ALÉM DO ÓBVIO Aplicações reais e novas possibilidades para negócios e governos.",
+          "speakers": [
+            "Alexandre Costa"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "sala-whashington",
+          "start": "19:55",
+          "title": "E depois da faculdade? Carreira, mercado de trabalho e concursos públicos em um mundo em transformação",
+          "speakers": [
+            "Prof Ridson"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "sala-whashington",
+          "start": "21:00",
+          "title": "Culture hacking no serviço público: a experiência da Setic/RO",
+          "speakers": [
+            "Delner Freire"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "anfiteatro-01",
+          "start": "18:50",
+          "title": "Passado, presente e futuro da Internet: nossa caminhada até o IPv6",
+          "speakers": [
+            "Sávyo Vinícius de Morais"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "anfiteatro-01",
+          "start": "19:55",
+          "title": "Quem herda você? Direito Sucessório na era da Inteligência Artificial",
+          "speakers": [
+            "Fábio Viana"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "anfiteatro-01",
+          "start": "21:00",
+          "title": "Implementação do protocolo IPv6 na SETIC-RO: Desafios e Oportunidades",
+          "speakers": [
+            "Gabriel Carrijo"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "anfiteatro-02",
+          "start": "18:50",
+          "title": null,
+          "speakers": [],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "nao-informado-no-roteiro"
+        },
+        {
+          "spaceId": "anfiteatro-02",
+          "start": "19:55",
+          "title": "To Split or not to Split: o Split Payment como Mecanismo de Recolhimento de IVA e seus Potenciais Impactos no Brasil",
+          "speakers": [
+            "Dr. Rafael Duck OAB/RO"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "anfiteatro-02",
+          "start": "21:00",
+          "title": "Fundamentos de Projetos de TIC: Abordando a Relação Ágil x Clássicos x Híbridos",
+          "speakers": [
+            "Umberto Gonçalves Ribeiro"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "lab-04",
+          "start": "19:00",
+          "title": "Do Caos ao Pipeline: Desenvolvimento Guiado por IA em Produção",
+          "speakers": [
+            "Diego Noronha"
+          ],
+          "sourceSection": "SAPIENS",
+          "sourcePage": 2,
+          "status": "informado"
+        },
+        {
+          "spaceId": "lab-02",
+          "start": "19:00",
+          "title": "Introdução a IoT e a Transformação Digital: Conhecendo o ambiente Netacad",
+          "speakers": [
+            "Evandro Cordeiro"
+          ],
+          "sourceSection": "SAPIENS",
+          "sourcePage": 2,
+          "status": "informado"
+        },
+        {
+          "spaceId": "lab-01",
+          "start": "19:00",
+          "title": "Agentes de IA conversacionais",
+          "speakers": [
+            "Rosângela Silva"
+          ],
+          "sourceSection": "SAPIENS",
+          "sourcePage": 2,
+          "status": "informado"
+        },
+        {
+          "spaceId": "lab-05",
+          "start": "19:00",
+          "title": "Assistentes de Programação com IA — Codex e Claude Code",
+          "speakers": [
+            "Anderson Seixas"
+          ],
+          "sourceSection": "SAPIENS",
+          "sourcePage": 2,
+          "status": "informado"
+        },
+        {
+          "spaceId": "maker",
+          "start": "19:00",
+          "title": "Introdução à robótica educacional com Arduino: da teoria à prática",
+          "speakers": [
+            "Prof Deise Lima"
+          ],
+          "sourceSection": "SAPIENS",
+          "sourcePage": 2,
+          "status": "informado"
+        },
+        {
+          "spaceId": "apg-01",
+          "start": "19:00",
+          "title": "Jogos Eletrônicos: A Evolução de Consoles, Mobile e Motores Gráficos",
+          "speakers": [
+            "Arthur William Assunção Francisco",
+            "Emanuel Douglas Régis",
+            "Yasmin Almeida da Silva"
+          ],
+          "sourceSection": "SAPIENS",
+          "sourcePage": 2,
+          "status": "informado"
+        },
+        {
+          "spaceId": "apg-02",
+          "start": "19:00",
+          "title": "Metodologia Ágil na Prática",
+          "speakers": [
+            "Prof. Moisés Rodrigues"
+          ],
+          "sourceSection": "SAPIENS",
+          "sourcePage": 2,
+          "status": "informado"
+        }
+      ]
     },
     {
-      "spaceId": "auditorio",
-      "start": "19:55",
-      "title": "Dados Públicos: o superpoder que ninguém usa, certo?",
-      "speakers": [
-        "André Dhiogo"
-      ],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "informado"
-    },
-    {
-      "spaceId": "auditorio",
-      "start": "21:00",
-      "title": "Aplicação das Principais Metodologias de Gestão e Negócios combinadas com a Análise Exploratória de Dados (AED) e a Inteligência Artificial na Melhoria da Tomada de Decisão",
-      "speakers": [
-        "Prof. Me. Carlos André Barbosa de Jesus"
-      ],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "informado"
-    },
-    {
-      "spaceId": "sala-whashington",
-      "start": "18:50",
-      "title": "INTELIGÊNCIA ARTIFICIAL ALÉM DO ÓBVIO Aplicações reais e novas possibilidades para negócios e governos.",
-      "speakers": [
-        "Alexandre Costa"
-      ],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "informado"
-    },
-    {
-      "spaceId": "sala-whashington",
-      "start": "19:55",
-      "title": "E depois da faculdade? Carreira, mercado de trabalho e concursos públicos em um mundo em transformação",
-      "speakers": [
-        "Prof Ridson"
-      ],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "informado"
-    },
-    {
-      "spaceId": "sala-whashington",
-      "start": "21:00",
-      "title": "Culture hacking no serviço público: a experiência da Setic/RO",
-      "speakers": [
-        "Delner Freire"
-      ],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "informado"
-    },
-    {
-      "spaceId": "anfiteatro-01",
-      "start": "18:50",
-      "title": "Passado, presente e futuro da Internet: nossa caminhada até o IPv6",
-      "speakers": [
-        "Sávyo Vinícius de Morais"
-      ],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "informado"
-    },
-    {
-      "spaceId": "anfiteatro-01",
-      "start": "19:55",
-      "title": "Quem herda você? Direito Sucessório na era da Inteligência Artificial",
-      "speakers": [
-        "Fábio Viana"
-      ],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "informado"
-    },
-    {
-      "spaceId": "anfiteatro-01",
-      "start": "21:00",
-      "title": "Implementação do protocolo IPv6 na SETIC-RO: Desafios e Oportunidades",
-      "speakers": [
-        "Gabriel Carrijo"
-      ],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "informado"
-    },
-    {
-      "spaceId": "anfiteatro-02",
-      "start": "18:50",
-      "title": null,
-      "speakers": [],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "nao-informado-no-roteiro"
-    },
-    {
-      "spaceId": "anfiteatro-02",
-      "start": "19:55",
-      "title": "To Split or not to Split: o Split Payment como Mecanismo de Recolhimento de IVA e seus Potenciais Impactos no Brasil",
-      "speakers": [
-        "Dr. Rafael Duck OAB/RO"
-      ],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "informado"
-    },
-    {
-      "spaceId": "anfiteatro-02",
-      "start": "21:00",
-      "title": "Fundamentos de Projetos de TIC: Abordando a Relação Ágil x Clássicos x Híbridos",
-      "speakers": [
-        "Umberto Gonçalves Ribeiro"
-      ],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "informado"
-    },
-    {
-      "spaceId": "lab-04",
-      "start": "19:00",
-      "title": "Do Caos ao Pipeline: Desenvolvimento Guiado por IA em Produção",
-      "speakers": [
-        "Diego Noronha"
-      ],
-      "sourceSection": "SAPIENS",
-      "sourcePage": 2,
-      "status": "informado"
-    },
-    {
-      "spaceId": "lab-02",
-      "start": "19:00",
-      "title": "Introdução a IoT e a Transformação Digital: Conhecendo o ambiente Netacad",
-      "speakers": [
-        "Evandro Cordeiro"
-      ],
-      "sourceSection": "SAPIENS",
-      "sourcePage": 2,
-      "status": "informado"
-    },
-    {
-      "spaceId": "lab-01",
-      "start": "19:00",
-      "title": "Agentes de IA conversacionais",
-      "speakers": [
-        "Rosângela Silva"
-      ],
-      "sourceSection": "SAPIENS",
-      "sourcePage": 2,
-      "status": "informado"
-    },
-    {
-      "spaceId": "lab-05",
-      "start": "19:00",
-      "title": "Assistentes de Programação com IA — Codex e Claude Code",
-      "speakers": [
-        "Anderson Seixas"
-      ],
-      "sourceSection": "SAPIENS",
-      "sourcePage": 2,
-      "status": "informado"
-    },
-    {
-      "spaceId": "maker",
-      "start": "19:00",
-      "title": "Introdução à robótica educacional com Arduino: da teoria à prática",
-      "speakers": [
-        "Prof Deise Lima"
-      ],
-      "sourceSection": "SAPIENS",
-      "sourcePage": 2,
-      "status": "informado"
-    },
-    {
-      "spaceId": "apg-01",
-      "start": "19:00",
-      "title": "Jogos Eletrônicos: A Evolução de Consoles, Mobile e Motores Gráficos",
-      "speakers": [
-        "Arthur William Assunção Francisco",
-        "Emanuel Douglas Régis",
-        "Yasmin Almeida da Silva"
-      ],
-      "sourceSection": "SAPIENS",
-      "sourcePage": 2,
-      "status": "informado"
-    },
-    {
-      "spaceId": "apg-02",
-      "start": "19:00",
-      "title": "Metodologia Ágil na Prática",
-      "speakers": [
-        "Prof. Moisés Rodrigues"
-      ],
-      "sourceSection": "SAPIENS",
-      "sourcePage": 2,
-      "status": "informado"
+      "date": "2026-11-05",
+      "dateLabel": "05/11",
+      "timezone": "America/Manaus",
+      "source": "ROTEIRO 05_11.pdf",
+      "dateBasis": "dia-05-confirmado-pelo-usuario",
+      "events": [
+        {
+          "spaceId": "auditorio",
+          "start": "18:50",
+          "title": "Palestra: A TI Não Pode Ser a Pedra no Caminho Como habilitar o negócio para inovar com IA sem perder governança, segurança e controle.",
+          "speakers": [
+            "Hugo Viana"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "auditorio",
+          "start": "19:55",
+          "title": "A IA não conserta uma experiência ruim — só te faz frustrar o usuário mais rápido",
+          "speakers": [
+            "João Marcos"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "auditorio",
+          "start": "20:40",
+          "title": "Computação aplicada às emergências climáticas no bioma amazônico.",
+          "speakers": [
+            "Gabriel Carrijo",
+            "Caê Aires Moura Lacerda"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "sala-whashington",
+          "start": "18:50",
+          "title": "PVH+: transformação digital e inteligência artificial a serviço da cidadania",
+          "speakers": [
+            "Cézar Marini"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "sala-whashington",
+          "start": "19:55",
+          "title": "BNCC maker: desenvolvimento de aplicativos, robótica educacional e IoT como caminho para as novas exigências da Computação na escola",
+          "speakers": [
+            "Marcello Batista Ribeiro",
+            "Liliane da Silva Coelho Jacon"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "sala-whashington",
+          "start": "21:00",
+          "title": "De Bolsista a Empreendedor: A Jornada da Ecotech Amazônia na Graduação",
+          "speakers": [
+            "William Cardoso"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "anfiteatro-01",
+          "start": "18:50",
+          "title": "Bioinformática e inteligência artificial: como dados biológicos podem revelar novas respostas",
+          "speakers": [
+            "Lucas Marques da Cunha"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "anfiteatro-01",
+          "start": "19:55",
+          "title": "Pentest na era de IA: o Hacker será substituído ou potencializado?",
+          "speakers": [
+            "Nick Reis"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "anfiteatro-02",
+          "start": "19:00",
+          "title": "Aspectos operacionais da prova digital: auditoria documental, testemunhal e cadeia de custódia",
+          "speakers": [
+            "Janus Pantoja"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "lab-02",
+          "start": "19:00",
+          "title": "Aspectos operacionais da prova digital: auditoria documental, testemunhal e cadeia de custódia",
+          "speakers": [
+            "Janus Pantoja"
+          ],
+          "sourceSection": "SAPIENS",
+          "sourcePage": 2,
+          "status": "informado"
+        },
+        {
+          "spaceId": "lab-04",
+          "start": "19:00",
+          "title": "Proxy Reverso com NGINX para serviços Docker",
+          "speakers": [
+            "Ian Pullig",
+            "Raul Chiullo Silva"
+          ],
+          "sourceSection": "SAPIENS",
+          "sourcePage": 2,
+          "status": "informado"
+        },
+        {
+          "spaceId": "maker",
+          "start": "19:00",
+          "title": "Montagem e manutenção de computadores",
+          "speakers": [
+            "João Vitor Dias de Souza"
+          ],
+          "sourceSection": "SAPIENS",
+          "sourcePage": 2,
+          "status": "informado"
+        },
+        {
+          "spaceId": "apg-02",
+          "start": "19:00",
+          "title": "CNC Adaptada a Impressão 3D: Uma Alternativa de Baixo Custo",
+          "speakers": [
+            "Allan Kardec Gurgel do Amaral"
+          ],
+          "sourceSection": "SAPIENS",
+          "sourcePage": 2,
+          "status": "informado"
+        }
+      ]
     }
   ]
 }

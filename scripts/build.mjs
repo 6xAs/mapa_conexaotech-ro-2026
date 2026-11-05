@@ -9,12 +9,17 @@ let [html, svg, json, css, js] = await Promise.all(['index.html', 'assets/map.sv
 const data = JSON.parse(json);
 const agendaJSON=await read('data/programacao.json');
 const agenda=JSON.parse(agendaJSON);
-assert(/^\d{4}-\d{2}-\d{2}$/.test(agenda.date));
-for(const event of agenda.events){
-  assert(data.some(s=>s.id===event.spaceId),'Atividade sem espaço: '+event.spaceId);
-  assert(/^([01]\d|2[0-3]):[0-5]\d$/.test(event.start),'Horário inválido');
-  assert(event.title||event.status==='nao-informado-no-roteiro','Título ausente sem sinalização');
-  assert(Array.isArray(event.speakers));
+assert(agenda.days.length > 0, 'Programação sem datas');
+assert.equal(new Set(agenda.days.map(day=>day.date)).size, agenda.days.length, 'Datas duplicadas');
+assert(agenda.days.some(day=>day.date===agenda.defaultDate), 'Data padrão ausente');
+for(const day of agenda.days){
+  assert(/^\d{4}-\d{2}-\d{2}$/.test(day.date));
+  for(const event of day.events){
+    assert(data.some(s=>s.id===event.spaceId),'Atividade sem espaço: '+event.spaceId);
+    assert(/^([01]\d|2[0-3]):[0-5]\d$/.test(event.start),'Horário inválido');
+    assert(event.title||event.status==='nao-informado-no-roteiro','Título ausente sem sinalização');
+    assert(Array.isArray(event.speakers));
+  }
 }
 assert.equal(new Set(data.map(s => s.id)).size, data.length, 'IDs duplicados');
 assert.deepEqual(data.filter(s => s.entry).map(s => s.id).sort(), ['credenciamento', 'informacoes']);

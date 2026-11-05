@@ -1,218 +1,378 @@
 {
-  "date": "2026-11-04",
-  "dateLabel": "04/11",
-  "timezone": "America/Manaus",
-  "source": "ROTEIRO 04_11.pdf",
-  "dateBasis": "dia-04-confirmado-pelo-usuario",
-  "events": [
+  "defaultDate": "2026-11-05",
+  "days": [
     {
-      "spaceId": "auditorio",
-      "start": "18:50",
-      "title": "Governança Baseada em Evidências: A Ciência de Dados na Gestão do TJRO",
-      "speakers": [
-        "Diego Souza"
-      ],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "informado"
+      "date": "2026-11-04",
+      "dateLabel": "04/11",
+      "timezone": "America/Manaus",
+      "source": "ROTEIRO 04_11.pdf",
+      "dateBasis": "dia-04-confirmado-pelo-usuario",
+      "events": [
+        {
+          "spaceId": "auditorio",
+          "start": "18:50",
+          "title": "Governança Baseada em Evidências: A Ciência de Dados na Gestão do TJRO",
+          "speakers": [
+            "Diego Souza"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "auditorio",
+          "start": "19:55",
+          "title": "Dados Públicos: o superpoder que ninguém usa, certo?",
+          "speakers": [
+            "André Dhiogo"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "auditorio",
+          "start": "21:00",
+          "title": "Aplicação das Principais Metodologias de Gestão e Negócios combinadas com a Análise Exploratória de Dados (AED) e a Inteligência Artificial na Melhoria da Tomada de Decisão",
+          "speakers": [
+            "Prof. Me. Carlos André Barbosa de Jesus"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "sala-whashington",
+          "start": "18:50",
+          "title": "INTELIGÊNCIA ARTIFICIAL ALÉM DO ÓBVIO Aplicações reais e novas possibilidades para negócios e governos.",
+          "speakers": [
+            "Alexandre Costa"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "sala-whashington",
+          "start": "19:55",
+          "title": "E depois da faculdade? Carreira, mercado de trabalho e concursos públicos em um mundo em transformação",
+          "speakers": [
+            "Prof Ridson"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "sala-whashington",
+          "start": "21:00",
+          "title": "Culture hacking no serviço público: a experiência da Setic/RO",
+          "speakers": [
+            "Delner Freire"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "anfiteatro-01",
+          "start": "18:50",
+          "title": "Passado, presente e futuro da Internet: nossa caminhada até o IPv6",
+          "speakers": [
+            "Sávyo Vinícius de Morais"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "anfiteatro-01",
+          "start": "19:55",
+          "title": "Quem herda você? Direito Sucessório na era da Inteligência Artificial",
+          "speakers": [
+            "Fábio Viana"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "anfiteatro-01",
+          "start": "21:00",
+          "title": "Implementação do protocolo IPv6 na SETIC-RO: Desafios e Oportunidades",
+          "speakers": [
+            "Gabriel Carrijo"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "anfiteatro-02",
+          "start": "18:50",
+          "title": null,
+          "speakers": [],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "nao-informado-no-roteiro"
+        },
+        {
+          "spaceId": "anfiteatro-02",
+          "start": "19:55",
+          "title": "To Split or not to Split: o Split Payment como Mecanismo de Recolhimento de IVA e seus Potenciais Impactos no Brasil",
+          "speakers": [
+            "Dr. Rafael Duck OAB/RO"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "anfiteatro-02",
+          "start": "21:00",
+          "title": "Fundamentos de Projetos de TIC: Abordando a Relação Ágil x Clássicos x Híbridos",
+          "speakers": [
+            "Umberto Gonçalves Ribeiro"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "lab-04",
+          "start": "19:00",
+          "title": "Do Caos ao Pipeline: Desenvolvimento Guiado por IA em Produção",
+          "speakers": [
+            "Diego Noronha"
+          ],
+          "sourceSection": "SAPIENS",
+          "sourcePage": 2,
+          "status": "informado"
+        },
+        {
+          "spaceId": "lab-02",
+          "start": "19:00",
+          "title": "Introdução a IoT e a Transformação Digital: Conhecendo o ambiente Netacad",
+          "speakers": [
+            "Evandro Cordeiro"
+          ],
+          "sourceSection": "SAPIENS",
+          "sourcePage": 2,
+          "status": "informado"
+        },
+        {
+          "spaceId": "lab-01",
+          "start": "19:00",
+          "title": "Agentes de IA conversacionais",
+          "speakers": [
+            "Rosângela Silva"
+          ],
+          "sourceSection": "SAPIENS",
+          "sourcePage": 2,
+          "status": "informado"
+        },
+        {
+          "spaceId": "lab-05",
+          "start": "19:00",
+          "title": "Assistentes de Programação com IA — Codex e Claude Code",
+          "speakers": [
+            "Anderson Seixas"
+          ],
+          "sourceSection": "SAPIENS",
+          "sourcePage": 2,
+          "status": "informado"
+        },
+        {
+          "spaceId": "maker",
+          "start": "19:00",
+          "title": "Introdução à robótica educacional com Arduino: da teoria à prática",
+          "speakers": [
+            "Prof Deise Lima"
+          ],
+          "sourceSection": "SAPIENS",
+          "sourcePage": 2,
+          "status": "informado"
+        },
+        {
+          "spaceId": "apg-01",
+          "start": "19:00",
+          "title": "Jogos Eletrônicos: A Evolução de Consoles, Mobile e Motores Gráficos",
+          "speakers": [
+            "Arthur William Assunção Francisco",
+            "Emanuel Douglas Régis",
+            "Yasmin Almeida da Silva"
+          ],
+          "sourceSection": "SAPIENS",
+          "sourcePage": 2,
+          "status": "informado"
+        },
+        {
+          "spaceId": "apg-02",
+          "start": "19:00",
+          "title": "Metodologia Ágil na Prática",
+          "speakers": [
+            "Prof. Moisés Rodrigues"
+          ],
+          "sourceSection": "SAPIENS",
+          "sourcePage": 2,
+          "status": "informado"
+        }
+      ]
     },
     {
-      "spaceId": "auditorio",
-      "start": "19:55",
-      "title": "Dados Públicos: o superpoder que ninguém usa, certo?",
-      "speakers": [
-        "André Dhiogo"
-      ],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "informado"
-    },
-    {
-      "spaceId": "auditorio",
-      "start": "21:00",
-      "title": "Aplicação das Principais Metodologias de Gestão e Negócios combinadas com a Análise Exploratória de Dados (AED) e a Inteligência Artificial na Melhoria da Tomada de Decisão",
-      "speakers": [
-        "Prof. Me. Carlos André Barbosa de Jesus"
-      ],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "informado"
-    },
-    {
-      "spaceId": "sala-whashington",
-      "start": "18:50",
-      "title": "INTELIGÊNCIA ARTIFICIAL ALÉM DO ÓBVIO Aplicações reais e novas possibilidades para negócios e governos.",
-      "speakers": [
-        "Alexandre Costa"
-      ],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "informado"
-    },
-    {
-      "spaceId": "sala-whashington",
-      "start": "19:55",
-      "title": "E depois da faculdade? Carreira, mercado de trabalho e concursos públicos em um mundo em transformação",
-      "speakers": [
-        "Prof Ridson"
-      ],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "informado"
-    },
-    {
-      "spaceId": "sala-whashington",
-      "start": "21:00",
-      "title": "Culture hacking no serviço público: a experiência da Setic/RO",
-      "speakers": [
-        "Delner Freire"
-      ],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "informado"
-    },
-    {
-      "spaceId": "anfiteatro-01",
-      "start": "18:50",
-      "title": "Passado, presente e futuro da Internet: nossa caminhada até o IPv6",
-      "speakers": [
-        "Sávyo Vinícius de Morais"
-      ],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "informado"
-    },
-    {
-      "spaceId": "anfiteatro-01",
-      "start": "19:55",
-      "title": "Quem herda você? Direito Sucessório na era da Inteligência Artificial",
-      "speakers": [
-        "Fábio Viana"
-      ],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "informado"
-    },
-    {
-      "spaceId": "anfiteatro-01",
-      "start": "21:00",
-      "title": "Implementação do protocolo IPv6 na SETIC-RO: Desafios e Oportunidades",
-      "speakers": [
-        "Gabriel Carrijo"
-      ],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "informado"
-    },
-    {
-      "spaceId": "anfiteatro-02",
-      "start": "18:50",
-      "title": null,
-      "speakers": [],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "nao-informado-no-roteiro"
-    },
-    {
-      "spaceId": "anfiteatro-02",
-      "start": "19:55",
-      "title": "To Split or not to Split: o Split Payment como Mecanismo de Recolhimento de IVA e seus Potenciais Impactos no Brasil",
-      "speakers": [
-        "Dr. Rafael Duck OAB/RO"
-      ],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "informado"
-    },
-    {
-      "spaceId": "anfiteatro-02",
-      "start": "21:00",
-      "title": "Fundamentos de Projetos de TIC: Abordando a Relação Ágil x Clássicos x Híbridos",
-      "speakers": [
-        "Umberto Gonçalves Ribeiro"
-      ],
-      "sourceSection": "FGV",
-      "sourcePage": 1,
-      "status": "informado"
-    },
-    {
-      "spaceId": "lab-04",
-      "start": "19:00",
-      "title": "Do Caos ao Pipeline: Desenvolvimento Guiado por IA em Produção",
-      "speakers": [
-        "Diego Noronha"
-      ],
-      "sourceSection": "SAPIENS",
-      "sourcePage": 2,
-      "status": "informado"
-    },
-    {
-      "spaceId": "lab-02",
-      "start": "19:00",
-      "title": "Introdução a IoT e a Transformação Digital: Conhecendo o ambiente Netacad",
-      "speakers": [
-        "Evandro Cordeiro"
-      ],
-      "sourceSection": "SAPIENS",
-      "sourcePage": 2,
-      "status": "informado"
-    },
-    {
-      "spaceId": "lab-01",
-      "start": "19:00",
-      "title": "Agentes de IA conversacionais",
-      "speakers": [
-        "Rosângela Silva"
-      ],
-      "sourceSection": "SAPIENS",
-      "sourcePage": 2,
-      "status": "informado"
-    },
-    {
-      "spaceId": "lab-05",
-      "start": "19:00",
-      "title": "Assistentes de Programação com IA — Codex e Claude Code",
-      "speakers": [
-        "Anderson Seixas"
-      ],
-      "sourceSection": "SAPIENS",
-      "sourcePage": 2,
-      "status": "informado"
-    },
-    {
-      "spaceId": "maker",
-      "start": "19:00",
-      "title": "Introdução à robótica educacional com Arduino: da teoria à prática",
-      "speakers": [
-        "Prof Deise Lima"
-      ],
-      "sourceSection": "SAPIENS",
-      "sourcePage": 2,
-      "status": "informado"
-    },
-    {
-      "spaceId": "apg-01",
-      "start": "19:00",
-      "title": "Jogos Eletrônicos: A Evolução de Consoles, Mobile e Motores Gráficos",
-      "speakers": [
-        "Arthur William Assunção Francisco",
-        "Emanuel Douglas Régis",
-        "Yasmin Almeida da Silva"
-      ],
-      "sourceSection": "SAPIENS",
-      "sourcePage": 2,
-      "status": "informado"
-    },
-    {
-      "spaceId": "apg-02",
-      "start": "19:00",
-      "title": "Metodologia Ágil na Prática",
-      "speakers": [
-        "Prof. Moisés Rodrigues"
-      ],
-      "sourceSection": "SAPIENS",
-      "sourcePage": 2,
-      "status": "informado"
+      "date": "2026-11-05",
+      "dateLabel": "05/11",
+      "timezone": "America/Manaus",
+      "source": "ROTEIRO 05_11.pdf",
+      "dateBasis": "dia-05-confirmado-pelo-usuario",
+      "events": [
+        {
+          "spaceId": "auditorio",
+          "start": "18:50",
+          "title": "Palestra: A TI Não Pode Ser a Pedra no Caminho Como habilitar o negócio para inovar com IA sem perder governança, segurança e controle.",
+          "speakers": [
+            "Hugo Viana"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "auditorio",
+          "start": "19:55",
+          "title": "A IA não conserta uma experiência ruim — só te faz frustrar o usuário mais rápido",
+          "speakers": [
+            "João Marcos"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "auditorio",
+          "start": "20:40",
+          "title": "Computação aplicada às emergências climáticas no bioma amazônico.",
+          "speakers": [
+            "Gabriel Carrijo",
+            "Caê Aires Moura Lacerda"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "sala-whashington",
+          "start": "18:50",
+          "title": "PVH+: transformação digital e inteligência artificial a serviço da cidadania",
+          "speakers": [
+            "Cézar Marini"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "sala-whashington",
+          "start": "19:55",
+          "title": "BNCC maker: desenvolvimento de aplicativos, robótica educacional e IoT como caminho para as novas exigências da Computação na escola",
+          "speakers": [
+            "Marcello Batista Ribeiro",
+            "Liliane da Silva Coelho Jacon"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "sala-whashington",
+          "start": "21:00",
+          "title": "De Bolsista a Empreendedor: A Jornada da Ecotech Amazônia na Graduação",
+          "speakers": [
+            "William Cardoso"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "anfiteatro-01",
+          "start": "18:50",
+          "title": "Bioinformática e inteligência artificial: como dados biológicos podem revelar novas respostas",
+          "speakers": [
+            "Lucas Marques da Cunha"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "anfiteatro-01",
+          "start": "19:55",
+          "title": "Pentest na era de IA: o Hacker será substituído ou potencializado?",
+          "speakers": [
+            "Nick Reis"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "anfiteatro-02",
+          "start": "19:00",
+          "title": "Aspectos operacionais da prova digital: auditoria documental, testemunhal e cadeia de custódia",
+          "speakers": [
+            "Janus Pantoja"
+          ],
+          "sourceSection": "FGV",
+          "sourcePage": 1,
+          "status": "informado"
+        },
+        {
+          "spaceId": "lab-02",
+          "start": "19:00",
+          "title": "Aspectos operacionais da prova digital: auditoria documental, testemunhal e cadeia de custódia",
+          "speakers": [
+            "Janus Pantoja"
+          ],
+          "sourceSection": "SAPIENS",
+          "sourcePage": 2,
+          "status": "informado"
+        },
+        {
+          "spaceId": "lab-04",
+          "start": "19:00",
+          "title": "Proxy Reverso com NGINX para serviços Docker",
+          "speakers": [
+            "Ian Pullig",
+            "Raul Chiullo Silva"
+          ],
+          "sourceSection": "SAPIENS",
+          "sourcePage": 2,
+          "status": "informado"
+        },
+        {
+          "spaceId": "maker",
+          "start": "19:00",
+          "title": "Montagem e manutenção de computadores",
+          "speakers": [
+            "João Vitor Dias de Souza"
+          ],
+          "sourceSection": "SAPIENS",
+          "sourcePage": 2,
+          "status": "informado"
+        },
+        {
+          "spaceId": "apg-02",
+          "start": "19:00",
+          "title": "CNC Adaptada a Impressão 3D: Uma Alternativa de Baixo Custo",
+          "speakers": [
+            "Allan Kardec Gurgel do Amaral"
+          ],
+          "sourceSection": "SAPIENS",
+          "sourcePage": 2,
+          "status": "informado"
+        }
+      ]
     }
   ]
 }
